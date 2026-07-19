@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>入职考核 — 问题速查笔记</title>
+<style>
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "PingFang SC", "Helvetica Neue", sans-serif;
+  background: #f8f9fa;
+  color: #1a1a2e;
+  line-height: 1.6;
+  padding: 0;
+}
+
+/* ===== Layout ===== */
+.container { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+/* ===== Hero ===== */
+.hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 56px 0 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(ellipse at 50% 0%, rgba(79, 172, 254, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(79, 172, 254, 0.15);
+  border: 1px solid rgba(79, 172, 254, 0.3);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #7ec8f0;
+  letter-spacing: 0.3px;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.hero h1 span { color: #4facfe; }
+.hero p {
+  font-size: 15px;
+  color: #a0aec0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.hero-meta {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.hero-meta span {
+  font-size: 13px;
+  color: #718096;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-meta .dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: #4facfe;
+  display: inline-block;
+}
+
+/* ===== Navigation ===== */
+.nav-bar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-bar .container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4a5568;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.nav-btn:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+}
+.nav-btn.phase1 { border-left: 3px solid #4facfe; }
+.nav-btn.phase2 { border-left: 3px solid #f6ad55; }
+.nav-btn.phase3 { border-left: 3px solid #fc8181; }
+.nav-btn.quick { border-left: 3px solid #68d391; }
+
+/* ===== Section ===== */
+.section {
+  padding: 44px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+.section:last-child { border-bottom: none; }
+
+/* ===== Phase Header ===== */
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.phase-badge.p1 { background: #ebf8ff; color: #2b6cb0; }
+.phase-badge.p2 { background: #fffaeb; color: #b7791f; }
+.phase-badge.p3 { background: #fff5f5; color: #c53030; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.section-header h2 {
+  font-size: 20px;
+  font-weight: 650;
+  color: #1a202c;
+}
+.section-header .note {
+  font-size: 12px;
+  color: #a0aec0;
+  font-weight: 400;
+  margin-left: auto;
+}
+.section-desc {
+  font-size: 14px;
+  color: #718096;
+  margin-bottom: 28px;
+  padding: 12px 16px;
+  background: #f7fafc;
+  border-radius: 8px;
+  border-left: 3px solid #4facfe;
+}
+
+/* ===== QA Card ===== */
+.qa-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+.qa-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.qa-card:last-child { margin-bottom: 0; }
+
+.qa-question {
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  background: #f7fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+.qa-question .q-icon {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  background: #4facfe;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qa-question .q-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2d3748;
+  line-height: 1.5;
+}
+.qa-question .q-tag {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: auto;
+}
+.q-tag.blue { background: #ebf8ff; color: #2b6cb0; }
+.q-tag.green { background: #f0fff4; color: #276749; }
+.q-tag.amber { background: #fffaeb; color: #b7791f; }
+
+.qa-answer {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #4a5568;
+  line-height: 1.8;
+}
+.qa-answer ul { list-style: none; }
+.qa-answer li {
+  padding: 3px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.qa-answer li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #4facfe;
+}
+.qa-answer .highlight {
+  background: #fffaeb;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+  color: #b7791f;
+}
+.qa-answer kbd {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  background: #edf2f7;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  color: #4a5568;
+}
+.qa-answer strong { color: #2d3748; }
+
+/* ===== Tag ===== */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.tag.red { background: #fff5f5; color: #c53030; }
+.tag.green { background: #f0fff4; color: #276749; }
+.tag.blue { background: #ebf8ff; color: #2b6cb0; }
+.tag.amber { background: #fffaeb; color: #b7791f; }
+.tag.purple { background: #faf5ff; color: #6b46c1; }
+
+/* ===== Flow Diagram ===== */
+.flow-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.flow-node {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  text-align: center;
+  min-width: 88px;
+}
+.flow-node .label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2d3748;
+  display: block;
+}
+.flow-node .desc {
+  font-size: 11px;
+  color: #a0aec0;
+  margin-top: 2px;
+}
+.flow-node.blue {
+  border-color: #bee3f8;
+  background: #ebf8ff;
+}
+.flow-node.green {
+  border-color: #c6f6d5;
+  background: #f0fff4;
+}
+.flow-node.amber {
+  border-color: #fefcbf;
+  background: #fffaeb;
+}
+.flow-arrow {
+  font-size: 18px;
+  color: #cbd5e0;
+  flex-shrink: 0;
+}
+
+/* ===== Table ===== */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 12px 0;
+}
+.data-table th {
+  background: #f7fafc;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  color: #718096;
+  padding: 10px 14px;
+  border-bottom: 2px solid #e2e8f0;
+}
+.data-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #4a5568;
+}
+.data-table tr:last-child td { border-bottom: none; }
+
+/* ===== Memory Card ===== */
+.memory-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+@media (max-width: 640px) {
+  .memory-cards { grid-template-columns: 1fr; }
+}
+/* ===== 全面移动端适配 ===== */
+@media (max-width: 900px) {
+  .container { padding: 0 14px; }
+  .hero { padding: 40px 0 32px; }
+  .hero h1 { font-size: 26px; }
+  .hero p { font-size: 14px; }
+  .hero-meta { gap: 14px; }
+  .hero-meta span { font-size: 12px; }
+  .section { padding: 32px 0; }
+  .section-header h2 { font-size: 18px; }
+  .qa-question { padding: 14px 16px; }
+  .qa-question .q-text { font-size: 14px; }
+  .qa-answer { padding: 14px 16px; font-size: 13px; }
+  .flow-row { gap: 4px; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; }
+  .flow-node { flex-shrink: 0; min-width: 72px; padding: 8px 12px; }
+  .flow-node .label { font-size: 12px; }
+  .flow-node .desc { font-size: 10px; }
+  .flow-arrow { font-size: 14px; }
+  .data-table { font-size: 12px; }
+  .section-desc { font-size: 13px; padding: 10px 14px; }
+  .phase-header { flex-wrap: wrap; gap: 6px; }
+  .qa-question .q-tag { font-size: 10px; padding: 1px 6px; }
+  .red-line-box { padding: 12px 16px; }
+  .tip { padding: 10px 14px; font-size: 12px; }
+  .quick-card { padding: 14px; }
+  .quick-card li { font-size: 12px; }
+  .mem-card { padding: 14px; }
+  .mem-card .big-num { font-size: 26px; }
+  .mem-card .mem-detail { font-size: 12px; }
+  kbd { font-size: 11px; }
+  .nav-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav-bar .container { flex-wrap: nowrap; justify-content: flex-start; gap: 6px; }
+  .nav-btn { white-space: nowrap; font-size: 11px; padding: 5px 10px; flex-shrink: 0; }
+  .mode-toggle { margin-left: 0; padding: 0 4px; }
+  .mode-label { font-size: 10px; }
+  .mode-switch { width: 30px; height: 16px; }
+  .mode-knob { width: 12px; height: 12px; top: 2px; left: 2px; }
+  .mode-toggle.exam .mode-knob { left: 16px; }
+}
+@media (max-width: 640px) {
+  .quick-grid { grid-template-columns: 1fr; }
+  .data-table { display: block; overflow-x: auto; white-space: nowrap; }
+  .data-table th, .data-table td { padding: 6px 10px; }
+  .phase-header span { font-size: 11px !important; }
+  /* 两栏细节卡片变单栏 */
+  .qa-answer [style*="grid-template-columns: 1fr 1fr"]:not(.memory-cards):not(.quick-grid) { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 420px) {
+  .hero h1 { font-size: 20px; }
+  .section { padding: 24px 0; }
+  .qa-question .q-text { font-size: 13px; }
+  .qa-answer { font-size: 12px; }
+  .flow-node { min-width: 60px; padding: 6px 8px; }
+  .flow-node .label { font-size: 11px; }
+  .mem-card .mem-detail { font-size: 11px; }
+  .quick-card li { font-size: 11px; }
+  .data-table { font-size: 11px; }
+}
+
+/* ===== Mode Toggle Switch ===== */
+.mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.mode-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #a0aec0;
+  transition: color 0.2s;
+}
+.mode-toggle.exam .mode-label:last-child { color: #4facfe; }
+.mode-toggle:not(.exam) .mode-label:first-child { color: #4facfe; }
+.mode-switch {
+  width: 36px;
+  height: 20px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  position: relative;
+  transition: background 0.25s;
+}
+.mode-toggle.exam .mode-switch { background: #4facfe; }
+.mode-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: left 0.25s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.mode-toggle.exam .mode-knob { left: 18px; }
+
+/* ===== Mark Button ===== */
+.mark-btn {
+  flex-shrink: 0;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 6px;
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.2s;
+  padding: 0 2px;
+}
+.mark-btn:hover { opacity: 0.8; transform: scale(1.15); }
+.qa-card.marked { border-left: 4px solid #fc8181; background: #fffcfc; }
+.qa-card.marked .mark-btn { opacity: 1; }
+/* ===== 答案折叠控制 ===== */
+.qa-answer.collapsed { display: none; }
+/* ===== 详细归档材料清单 ===== */
+.doc-list { font-size: 12px; line-height: 1.8; margin-top: 6px; }
+.doc-list .doc-item { display: flex; align-items: baseline; gap: 4px; padding: 1px 0; }
+.doc-list .doc-name { flex: 1; }
+.doc-list .doc-owner { color: #718096; font-size: 11px; white-space: nowrap; }
+.doc-list .doc-must { color: #c53030; font-size: 11px; white-space: nowrap; }
+.doc-list .doc-opt { color: #a0aec0; font-size: 11px; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-badge">📘 黄俊 · 产品经理入职考核准备</div>
+    <h1>考核问题 <span>速查笔记</span></h1>
+    <p>基于《项目实施管理制度》《核心岗位职责》《项目监控和操作指引》<br>覆盖考核三阶段所有考点，问答形式呈现</p>
+    <div class="hero-meta">
+      <span><span class="dot"></span> 7/28 考核日</span>
+      <span><span class="dot"></span> 第一周：问答</span>
+      <span><span class="dot"></span> 第二周：内部讲解</span>
+      <span><span class="dot"></span> 第三周：复现评审</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Sticky Nav ===== -->
+<nav class="nav-bar">
+  <div class="container">
+    <a href="#phase1" class="nav-btn phase1">📋 第一周·项目规范</a>
+    <a href="#phase2" class="nav-btn phase2">📝 第二周·业务讲解</a>
+    <a href="#phase3" class="nav-btn phase3">🎤 第三周·评审演示</a>
+    <a href="#quick" class="nav-btn quick">⚡ 考前速记</a>
+    <a href="#" class="nav-btn" id="filterMarked" onclick="toggleFilter()" style="border-left:3px solid #fc8181;">🔖 标记</a>
+    <a href="#" class="nav-btn" id="shareMarks" onclick="shareMarked()" style="font-size:12px;">📤 分享</a>
+    <span class="mode-toggle" id="modeToggle" onclick="toggleMode()">
+      <span class="mode-label">📖 学习</span>
+      <span class="mode-switch">
+        <span class="mode-knob"></span>
+      </span>
+      <span class="mode-label">📝 考核</span>
+    </span>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- ============================================================ -->
+  <!-- 阶段说明 -->
+  <!-- ============================================================ -->
+  <section class="section" id="overview">
+    <div class="section-header">
+      <h2>🗺️ 考核全景地图</h2>
+    </div>
+
+    <div class="flow-row">
+      <div class="flow-node blue">
+        <span class="label">Day 1-3</span>
+        <span class="desc">7/15-17</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node blue">
+        <span class="label">第一周</span>
+        <span class="desc">项目规范+岗位</span>
+      </div>
+      <span class="flow-arrow">→ 问答 →</span>
+      <div class="flow-node amber">
+        <span class="label">Day 4-8</span>
+        <span class="desc">7/20-24</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node amber">
+        <span class="label">第二周</span>
+        <span class="desc">业务学习+讲解</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node" style="border-color:#fc8181;background:#fff5f5;">
+        <span class="label">Day 9-10</span>
+        <span class="desc">7/27-28</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node" style="border-color:#fc8181;background:#fff5f5;">
+        <span class="label">🏁 考核日</span>
+        <span class="desc">7/28 复现评审</span>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:200px;background:#ebf8ff;border-radius:10px;padding:16px;">
+        <div style="font-size:13px;font-weight:600;color:#2b6cb0;margin-bottom:6px;">📋 问答考核</div>
+        <div style="font-size:12px;color:#4a5568;">管理制度、文档标准、绩效理解、安全红线</div>
+      </div>
+      <div style="flex:1;min-width:200px;background:#fffaeb;border-radius:10px;padding:16px;">
+        <div style="font-size:13px;font-weight:600;color:#b7791f;margin-bottom:6px;">🎤 内部讲解</div>
+        <div style="font-size:12px;color:#4a5568;">修正版业务需求说明书、功能清单、原型理解</div>
+      </div>
+      <div style="flex:1;min-width:200px;background:#fff5f5;border-radius:10px;padding:16px;">
+        <div style="font-size:13px;font-weight:600;color:#c53030;margin-bottom:6px;">🏁 复现评审</div>
+        <div style="font-size:12px;color:#4a5568;">抽功能点 → 背景说明→功能逻辑→交互流程→边界情况</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- PHASE 1: 第一周考核 - 项目规范 + 部门工作 -->
+  <!-- ============================================================ -->
+  <section class="section" id="phase1">
+    <div class="phase-header">
+      <div class="phase-badge p1">📋 第一周考核</div>
+      <span style="font-size:13px;color:#a0aec0;">7/15-17 · 项目规范 + 部门工作 · 问答形式</span>
+    </div>
+    <div class="section-header">
+      <h2>Q1~Q20：管理制度·文档标准·安全红线</h2>
+      <span class="note">来源：项目实施管理制度 + 核心岗位职责</span>
+    </div>
+    <div class="section-desc">
+      考核点：项目管理七大阶段、五类项目分类、制度的三个目的、四类管理红线、产品经理核心职责、文档格式规范、归档材料清单、紧急问题处理、安全培训18+13条规则
+    </div>
+
+    <!-- Q1 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">项目管理分为哪七个阶段？每个阶段具体怎么做？</div>
+        <span class="q-tag red">必考 ⚠️</span>
+      </div>
+      <div class="qa-answer">
+        <p>参照CMMI标准，项目划分为 <strong>七个阶段</strong>（项目计划与监控贯穿全程）：</p>
+
+        <div style="margin:14px 0;background:#f7fafc;border-radius:10px;padding:16px;">
+          <h3 style="font-size:15px;font-weight:700;color:#2b6cb0;">① 项目立项 <span style="font-weight:400;color:#a0aec0;font-size:12px;">（产品类由产品经理作为项目经理组织立项，其他类由项目经理或运维主管组织立项）</span></h3>
+          <div style="background:#ffffff;border-radius:8px;padding:12px;margin-top:6px;">
+            <p style="font-weight:600;font-size:13px;">第1步 · 项目评估</p>
+            <ul style="font-size:13px;">
+              <li><strong>建设内容分析</strong>（项目经理牵头，与产品经理、技术组长共同拆解）：依据<kbd>《项目可研报告》</kbd><kbd>《项目招标文件》</kbd><kbd>《项目投标文件》</kbd><kbd>《项目合同》</kbd>，评估管理/设计/研发/测试/部署/运维/采购/差旅等成本，识别风险 → <kbd>《项目研发成本及风险预估表》</kbd><strong>（项目经理负责）</strong></li>
+              <li><strong>整体计划制定</strong>（项目经理）：根据工期+人员情况 → <kbd>《项目整体实施计划》</kbd><strong>（项目经理负责）</strong></li>
+              <li><strong>立项评审</strong>（项目经理）：编写<kbd>《项目立项汇报PPT》</kbd><strong>（项目经理编写）</strong>，向职能负责人+公司领导汇报内容/成本/团队/计划/风险，征求意见修改</li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">第2步 · 立项审批</p>
+            <ul style="font-size:13px;">
+              <li>编写<kbd>《项目立项申请表》</kbd><strong>（项目经理编写）</strong>，连同预估表+计划表提交PMO检查材料</li>
+              <li>PMO确认无误后 → 在<strong>OA上发起立项流程</strong> → 项目管理委员会审批 → 正式立项</li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">第3步 · 项目启动</p>
+            <ul style="font-size:13px;">
+              <li>在立项汇报PPT基础上调整 → <kbd>《项目启动会PPT》</kbd><strong>（项目经理调整）</strong></li>
+              <li>组织全体项目成员参加启动会 → 明确建设内容/人员职责/里程碑/日常工作制度</li>
+              <li>根据软件系统 → <kbd>《系统迭代计划》</kbd><strong>（项目经理制定并录入系统）</strong></li>
+            </ul>
+          </div>
+          <div class="doc-list">
+            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:#2d3748;">📋 归档材料清单（10项）：</div>
+            <div class="doc-item"><span class="doc-name">项目可研报告</span><span class="doc-owner">项目经理</span><span class="doc-opt">·可选</span></div>
+            <div class="doc-item"><span class="doc-name">项目招标文件</span><span class="doc-owner">项目经理</span><span class="doc-opt">·招标类必须</span></div>
+            <div class="doc-item"><span class="doc-name">项目投标文件</span><span class="doc-owner">项目经理</span><span class="doc-opt">·招标类必须</span></div>
+            <div class="doc-item"><span class="doc-name">项目合同</span><span class="doc-owner">项目经理</span><span class="doc-opt">·产品和内部项目外必须</span></div>
+            <div class="doc-item"><span class="doc-name">项目立项汇报PPT</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须（纯产品实施可裁剪）</span></div>
+            <div class="doc-item"><span class="doc-name">项目研发成本及风险预估表</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">项目整体实施计划</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">项目立项申请表</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">项目启动会PPT</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">系统迭代计划</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+          </div>
+        </div>
+
+        <div style="margin:14px 0;background:#f7fafc;border-radius:10px;padding:16px;">
+          <h3 style="font-size:15px;font-weight:700;color:#b7791f;">② 需求分析 <span style="font-weight:400;color:#a0aec0;font-size:12px;">（产品经理组织，项目经理协调资源）</span></h3>
+          <div style="background:#ffffff;border-radius:8px;padding:12px;margin-top:6px;">
+            <p style="font-weight:600;font-size:13px;">第1步 · 需求调研</p>
+            <ul style="font-size:13px;">
+              <li>制定<kbd>《需求调研计划》</kbd><strong>（产品经理制定）</strong> + 准备<kbd>《需求调研材料》</kbd> → 开展调研</li>
+              <li>汇总分析（业务场景/流程/角色/数据标准/功能要点）→ 编写<kbd>《业务需求说明书》</kbd><strong>（产品经理）</strong></li>
+              <li>产品组内审核 + 客户确认 → 签订<kbd>《需求确认单》</kbd><strong>（产品经理/项目经理）</strong></li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">第2步 · 功能设计</p>
+            <ul style="font-size:13px;">
+              <li>系统功能架构设计 → 分解子系统/模块/功能 → <kbd>《系统功能清单》</kbd><strong>（产品经理）</strong></li>
+              <li>复杂功能绘制<kbd>《系统原型》</kbd><strong>（产品经理）</strong> + 注释说明，重难点标注</li>
+              <li><strong>产品组内预审</strong>（产品组负责人审核）→ 修改 → 确保功能齐全/设计合理/逻辑通畅/原型规范</li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">第3步 · 需求评审</p>
+            <ul style="font-size:13px;">
+              <li>产品经理<strong>提前一天</strong>发邮件+工作群通知 → 全体成员参加</li>
+              <li>逐项提出评审意见 → 产品经理记录在<kbd>功能清单</kbd> → 整改</li>
+              <li>视改动范围重新评审或小范围通知 → 所有问题点处理完成 + <strong>提出人签字确认</strong></li>
+              <li>项目经理填写<kbd>《需求评审单》</kbd><strong>（项目经理填写）</strong> + 附本次通过的功能清单</li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">第4步 · 需求录入</p>
+            <ul style="font-size:13px;">
+              <li>技术组长评估研发工作量填入功能清单</li>
+              <li>产品经理将功能点录入<strong>项目管理系统（禅道）</strong>，<strong>功能点数量/名称必须与清单完全一致</strong></li>
+              <li><strong>评审完后2天内</strong>完成录入</li>
+            </ul>
+          </div>
+          <div class="doc-list">
+            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:#2d3748;">📋 归档材料清单（8项）：</div>
+            <div class="doc-item"><span class="doc-name">需求调研计划</span><span class="doc-owner">产品经理</span><span class="doc-opt">·可选</span></div>
+            <div class="doc-item"><span class="doc-name">需求调研材料</span><span class="doc-owner">产品经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">业务需求说明书</span><span class="doc-owner">产品经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">系统功能清单</span><span class="doc-owner">产品经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">系统原型</span><span class="doc-owner">产品经理</span><span class="doc-opt">·复杂功能必须</span></div>
+            <div class="doc-item"><span class="doc-name">需求规格说明书</span><span class="doc-owner">产品经理</span><span class="doc-opt">·可后补</span></div>
+            <div class="doc-item"><span class="doc-name">其他备用材料</span><span class="doc-owner">产品经理</span><span class="doc-opt">·可选</span></div>
+            <div class="doc-item"><span class="doc-name">需求评审单</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+          </div>
+        </div>
+
+        <div style="margin:14px 0;background:#f7fafc;border-radius:10px;padding:16px;">
+          <h3 style="font-size:15px;font-weight:700;color:#276749;">③ 设计开发 <span style="font-weight:400;color:#a0aec0;font-size:12px;">（研发组主导，产品经理参与评审+周验证）</span></h3>
+          <div style="background:#ffffff;border-radius:8px;padding:12px;margin-top:6px;">
+            <p style="font-weight:600;font-size:13px;">第1步 · 程序设计</p>
+            <ul style="font-size:13px;">
+              <li>技术组长输出<kbd>《技术总体设计说明》</kbd><strong>（技术组长）</strong>（框架/中间件/加密机制），同时遵循<kbd>《系统编码规范》</kbd><kbd>《界面设计规范》</kbd><strong>（技术组长提前制定）</strong></li>
+              <li>按功能点逐项详细设计 → <kbd>《系统详细设计说明》</kbd><strong>（技术组长组织开发人员）</strong>；<kbd>《数据库设计说明》</kbd><strong>（技术组长，结项时必须）</strong></li>
+              <li><strong>研发组内预审</strong>（技术组长审核）→ 整改 → 确保功能齐全/设计完整/逻辑正确</li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">第2步 · 设计评审（仅重难点功能）</p>
+            <ul style="font-size:13px;">
+              <li>技术组长提前一天通知 → PM记录意见在功能清单 → 整改→签字确认→<kbd>《设计评审单》</kbd><strong>（项目经理填写）</strong></li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">第3步 · 用例编写（与程序设计同步，不晚于1周内）</p>
+            <ul style="font-size:13px;">
+              <li>测试工程师按需求+功能清单+原型编写<kbd>《测试用例》</kbd><strong>（测试工程师）</strong> → 测试组内预审 → 用例评审→<kbd>《测试评审单》</kbd><strong>（项目经理填写）</strong></li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">第4步 · 程序开发</p>
+            <ul style="font-size:13px;">
+              <li>技术组长创建开发任务分配 → 开发编码+自测 → 系统标记完成</li>
+              <li><strong>产品经理每周</strong>检查开发完成功能，按测试用例验证 → 通过则转测试，不符合则<strong>打回</strong></li>
+              <li>有对外接口 → 输出<kbd>《对外接口调用说明》</kbd></li>
+            </ul>
+          </div>
+          <div class="doc-list">
+            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:#2d3748;">📋 归档材料清单（11项）：</div>
+            <div class="doc-item"><span class="doc-name">系统编码规范</span><span class="doc-owner">技术组长</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">界面设计规范</span><span class="doc-owner">技术组长</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">技术总体设计说明</span><span class="doc-owner">技术组长</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">系统详细设计说明</span><span class="doc-owner">技术组长</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">测试用例</span><span class="doc-owner">测试工程师</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">数据库设计说明</span><span class="doc-owner">技术组长</span><span class="doc-must">·结项时必须</span></div>
+            <div class="doc-item"><span class="doc-name">对外接口调用说明</span><span class="doc-owner">技术组长</span><span class="doc-opt">·有对外接口必须</span></div>
+            <div class="doc-item"><span class="doc-name">内部接口说明</span><span class="doc-owner">技术组长</span><span class="doc-opt">·有前后端交互必须</span></div>
+            <div class="doc-item"><span class="doc-name">外部接口调用说明</span><span class="doc-owner">技术组长</span><span class="doc-opt">·有调用外部接口必须</span></div>
+            <div class="doc-item"><span class="doc-name">设计评审单</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">测试评审单</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+          </div>
+        </div>
+
+        <div style="margin:14px 0;background:#f7fafc;border-radius:10px;padding:16px;">
+          <h3 style="font-size:15px;font-weight:700;color:#6b46c1;">④ 系统测试 <span style="font-weight:400;color:#a0aec0;font-size:12px;">（内部测试+用户测试）</span></h3>
+          <div style="background:#ffffff;border-radius:8px;padding:12px;margin-top:6px;">
+            <p style="font-weight:600;font-size:13px;">内部测试（技术组长主导）</p>
+            <ul style="font-size:13px;">
+              <li>技术组长填写<kbd>《项目测试申请单》</kbd><strong>（技术组长）</strong> → 邮件提测</li>
+              <li><strong>测试工程师输出《内部测试环境部署方案》</strong></li>
+              <li>测试工程师搭建环境 → 按测试用例功能/性能/安全测试 → BUG录入禅道</li>
+              <li>输出<kbd>《功能测试报告》《性能测试报告》《安全测试报告》</kbd><strong>（测试工程师）</strong></li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">用户测试（产品类由产品经理主导/其他项目由项目经理主导）</p>
+            <ul style="font-size:13px;">
+              <li>确认测试功能 → 整理参数配置 → <strong>项目经理组织输出《用户测试环境部署方案》</strong> → 搭建用户测试环境 → <strong>产品经理</strong>编制内部培训材料 → 内部培训后输出<kbd>《内部培训签到表》</kbd><strong>（产品经理）</strong> → <strong>项目经理</strong>组织用户培训后输出<kbd>《用户培训签到表》</kbd><strong>（项目经理）</strong> → 组织测试 → 问题记录到<kbd>《项目问题跟踪表》</kbd><kbd>《问题反馈单》</kbd></li>
+            </ul>
+          </div>
+          <div class="doc-list">
+            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:#2d3748;">📋 归档材料清单（9项）：</div>
+            <div class="doc-item"><span class="doc-name">测试申请单</span><span class="doc-owner">技术组长</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">功能测试报告</span><span class="doc-owner">测试工程师</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">性能测试报告</span><span class="doc-owner">测试工程师</span><span class="doc-opt">·有性能测试点必须</span></div>
+            <div class="doc-item"><span class="doc-name">安全测试报告</span><span class="doc-owner">测试工程师</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">内部测试环境部署方案</span><span class="doc-owner">测试工程师</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">用户测试环境部署方案</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">内部培训签到表</span><span class="doc-owner">产品经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">用户培训签到表</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">问题反馈单</span><span class="doc-owner">项目经理</span><span class="doc-opt">·有BUG或需求时提交</span></div>
+          </div>
+        </div>
+
+          <div style="margin:14px 0;background:#f7fafc;border-radius:10px;padding:16px;">
+          <h3 style="font-size:15px;font-weight:700;color:#c53030;">⑤ 部署上线 <span style="font-weight:400;color:#a0aec0;font-size:12px;">（先确认环境+申请，再部署）</span></h3>
+          <div style="background:#ffffff;border-radius:8px;padding:12px;margin-top:6px;">
+          <p style="font-weight:600;font-size:13px;">第1步 · 环境准备</p>
+          <ul style="font-size:13px;">
+            <li><strong>产品经理</strong>整理上线材料：<kbd>《子系统清单》</kbd><kbd>《系统模块清单》</kbd><kbd>《系统功能清单》</kbd><kbd>《系统权限清单》</kbd><kbd>《系统配置文档》</kbd></li>
+            <li>项目经理编写<kbd>《系统部署方案》</kbd><strong>（项目经理）</strong>（含网络拓扑）→ 评审 → <kbd>《部署方案评审单》</kbd><strong>（项目经理）</strong></li>
+            <li>准备中间件+应用程序包+安装手册 → 项目经理填写<kbd>《上线申请单》</kbd><strong>（项目经理）</strong>（客户签字确认）；同时准备<kbd>《发布程序包》</kbd><strong>（测试工程师提供）</strong>、<kbd>《中间件安装手册》《应用程序安装手册》</kbd><strong>（运维工程师）</strong>、<kbd>《测试数据库》《数据库升级脚本》</kbd></li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">第2步 · 部署发布</p>
+            <ul style="font-size:13px;">
+              <li>按部署手册部署 → 验证主要功能 → 输出<kbd>《服务部署清单》《服务配置说明》</kbd></li>
+            </ul>
+          </div>
+          <div class="doc-list">
+            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:#2d3748;">📋 归档材料清单（15项）：</div>
+            <div class="doc-item"><span class="doc-name">子系统清单</span><span class="doc-owner">产品经理</span><span class="doc-opt">·有子系统必须</span></div>
+            <div class="doc-item"><span class="doc-name">系统模块清单</span><span class="doc-owner">产品经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">系统功能清单</span><span class="doc-owner">产品经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">系统权限清单</span><span class="doc-owner">产品经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">系统配置文档</span><span class="doc-owner">产品经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">系统部署方案</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">部署方案评审单</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">中间件安装手册</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">发布程序包</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">应用程序安装手册</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">上线申请单</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">服务部署清单</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">服务配置说明</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">测试数据库</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">数据库升级脚本</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+          </div>
+        </div>
+
+        <div style="margin:14px 0;background:#f7fafc;border-radius:10px;padding:16px;">
+          <h3 style="font-size:15px;font-weight:700;color:#2d3748;">⑥ 验收结项</h3>
+          <div style="background:#ffffff;border-radius:8px;padding:12px;margin-top:6px;">
+            <p style="font-weight:600;font-size:13px;">第1步 · 项目验收</p>
+            <ul style="font-size:13px;">
+              <li>项目经理组织补充后补文档（需求规格/详细设计/数据库设计等）→ 整理验收文档 → 开验收会 → 获取<kbd>《项目验收单》</kbd><strong>（项目经理负责推动）</strong></li>
+            </ul>
+            <p style="font-weight:600;font-size:13px;margin-top:8px;">第2步 · 项目结项（原则上先拿验收单再结项）</p>
+            <ul style="font-size:13px;">
+              <li>项目经理组织交接会向运维团队介绍 → 项目管理委员会审核交接材料 → <kbd>《项目交接单》</kbd><strong>（项目经理）</strong></li>
+              <li>项目经理填写<kbd>《项目结项单》</kbd><strong>（项目经理）</strong> → PMO审查归档材料完整性 → 公司领导审批结项</li>
+            </ul>
+          </div>
+          <div class="doc-list">
+            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:#2d3748;">📋 归档材料（附表B交接核心材料38项）：</div>
+            <div class="doc-item"><span class="doc-name">包含需求、设计、测试、部署、运维全阶段材料</span></div>
+            <div class="doc-item"><span class="doc-name">关键：客户验收材料不能完全作为项目交接材料</span><span class="doc-owner">项目验收单·结项单 项目经理负责</span></div>
+          </div>
+        </div>
+
+        <div style="margin:14px 0;background:#f7fafc;border-radius:10px;padding:16px;">
+          <h3 style="font-size:15px;font-weight:700;color:#276749;">⑦ 项目运维 <span style="font-weight:400;color:#a0aec0;font-size:12px;">（上线即开始）</span></h3>
+          <div style="background:#ffffff;border-radius:8px;padding:12px;margin-top:6px;">
+            <ul style="font-size:13px;">
+              <li><strong>运维材料整理</strong>：<kbd>《运维服务方案》</kbd><kbd>《项目运维手册》</kbd><kbd>《运维配置项清单》</kbd><kbd>《应用程序部署手册》</kbd><strong>（项目经理/运维主管）</strong>→ 不断更新</li>
+              <li><strong>项目巡检</strong>（服务器/中间件/应用程序/业务功能/业务数据）<strong>（运维人员）</strong>→ <kbd>《项目巡检记录》</kbd></li>
+              <li><strong>问题处理</strong>（记录问题+客户需求 → 排期处理，配合第三方测评）<strong>（项目经理/运维人员）</strong></li>
+            </ul>
+          </div>
+          <div class="doc-list">
+            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:#2d3748;">📋 归档材料清单（13项）：</div>
+            <div class="doc-item"><span class="doc-name">运维服务方案</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">中间件安装手册</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">发布程序包</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">应用程序部署手册</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">运维配置项清单</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">服务配置说明</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">项目更新部署记录</span><span class="doc-owner">项目经理</span><span class="doc-opt">·有部署时</span></div>
+            <div class="doc-item"><span class="doc-name">项目运维手册</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">项目巡检记录</span><span class="doc-owner">项目经理</span><span class="doc-must">·必须</span></div>
+            <div class="doc-item"><span class="doc-name">项目运维记录</span><span class="doc-owner">项目经理</span><span class="doc-opt">·记录客户问题</span></div>
+            <div class="doc-item"><span class="doc-name">项目问题跟踪表</span><span class="doc-owner">项目经理</span><span class="doc-opt">·有排期问题时</span></div>
+            <div class="doc-item"><span class="doc-name">问题反馈单</span><span class="doc-owner">项目经理</span><span class="doc-opt">·用户有反馈时</span></div>
+            <div class="doc-item"><span class="doc-name">事故分析报告</span><span class="doc-owner">项目经理</span><span class="doc-opt">·质量事故时</span></div>
+          </div>
+        </div>
+
+        <div class="tip red" style="margin-top:8px;">
+          <strong>🏁 考核现场提示：</strong>被问到阶段流程时，按「主导角色→具体步骤→产出物」三个维度展开，别忘了每个阶段最后的<strong>归档材料</strong>。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">团队由哪些职能组组成？产品经理在哪个组？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <p>项目团队由 <strong>四个职能组</strong> 组成：</p>
+        <ul>
+          <li><strong>项目管理委员会</strong>：公司领导、职能组负责人、PMO — 审批立项/变更/结项</li>
+          <li><strong>项目交付组</strong>：项目经理、运维主管、运维工程师 — 过程管控、部署上线、运维</li>
+          <li><strong>产品组</strong>（← 产品经理在此）：需求分析、功能验证、内部培训</li>
+          <li><strong>研发组</strong>：技术组长、开发工程师、测试主管、测试工程师 — 设计开发、测试</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q3: 四类管理红线 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">公司的四条「管理红线」是什么？</div>
+        <span class="q-tag red">必考 ⚠️</span>
+      </div>
+      <div class="qa-answer">
+        <div class="red-line-box">
+          <h3>⛔ 四条红线（触碰即事故）</h3>
+          <ul>
+            <li><strong>私自动工</strong> — 未经项目管理委员会或公司领导批准提前投入开发；客户提出合同外需求，未及时汇报公司领导和商务，私自投入开发</li>
+            <li><strong>私交代码</strong> — 客户要求提交项目源代码，未及时汇报公司，私下将源代码提交客户</li>
+            <li><strong>数据安全</strong> — 长时间私自留存客户重要数据，出现数据安全问题被公司巡查发现或被客户发现通报的</li>
+            <li><strong>质量事故</strong> — 由于系统代码质量或部署原因，出现生产服务故障导致业务无法经办，被公司巡查发现或被客户发现通报的</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4: 产品经理岗位职责 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">产品经理有哪些核心岗位职责？</div>
+        <span class="q-tag red">必考 ⚠️</span>
+      </div>
+      <div class="qa-answer">
+        <p>根据《软件交付部核心岗位职责》，产品经理职责分为四大块：</p>
+
+        <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-top:10px;">
+          <h3 style="font-size:15px;font-weight:700;color:#2b6cb0;">1. 新产品预研</h3>
+          <ul>
+            <li>按公司业务发展策略，负责现有产品线或新方向的市场需求调研、业务功能分析</li>
+            <li>组织新产品关键技术可行性预研</li>
+            <li>评估投入成本和产出利润 → 形成整体的可行性分析报告</li>
+          </ul>
+
+          <h3 style="font-size:15px;font-weight:700;color:#2b6cb0;margin-top:14px;">2. 产品研发管理（全流程管控）</h3>
+          <ul>
+            <li><strong>产品规划和立项：</strong>业务需求分析→功能模块规划→核心功能原型设计→组织研发评估工期/工作量→编写立项材料</li>
+            <li><strong>过程管控：</strong>整体计划制定、团队人员管理、里程碑节点管控。以<strong>周为节点</strong>对偏差（里程碑/研发进度/产品成本）制定风险防范和应对措施</li>
+            <li><strong>需求输出和管控：</strong>功能详细设计→需求材料→组织需求评审→<strong>以周为节点</strong>对功能开发情况进行验证→研发过程中的新需求和问题记录处理→协调调整开发和测试计划</li>
+            <li><strong>成果物输出和审查：</strong>编写管理材料/需求材料/培训材料/产品介绍材料，并按照公司标准<strong>审查其他团队成员</strong>输出的开发设计材料、测试材料、部署实施材料，组织整改</li>
+            <li><strong>产品发布和结项：</strong>准备演示环境和数据→召开产品发布会→归档→发起结项</li>
+            <li><strong>产品维护管理：</strong>记录产品缺陷和需求→影响用户使用的问题安排修复→更新产品资料</li>
+          </ul>
+
+          <h3 style="font-size:15px;font-weight:700;color:#2b6cb0;margin-top:14px;">3. 项目售前支撑</h3>
+          <ul>
+            <li>协助售前进行客户沟通汇报、项目需求调研、方案规划、研发和实施成本评估，输出相关文档</li>
+          </ul>
+
+          <h3 style="font-size:15px;font-weight:700;color:#2b6cb0;margin-top:14px;">4. 项目实施支持</h3>
+          <ul>
+            <li><strong>项目需求输出和管控：</strong>参与需求调研→系统功能详细设计→需求材料输出→组织需求评审→<strong>每周</strong>功能验证→记录处理新需求和问题</li>
+            <li><strong>项目文档输出和评审：</strong>输出需求材料/培训材料，<strong>参与开发设计、系统测试、实施部署等环节的评审</strong>，提出问题和整改意见</li>
+            <li><strong>项目内部培训：</strong>面向项目团队成员提供系统操作培训，必要时按项目经理安排参与客户培训</li>
+            <li><strong>系统问题记录和跟踪：</strong>以周为节点汇总各项目问题处理情况，对需要产品参与的问题提供解决方案支撑</li>
+          </ul>
+        </div>
+
+        <div class="tip blue" style="margin-top:10px;">
+          <strong>💡 考核注意：</strong>产品经理不只管需求，还要<strong>审查开发设计/测试/部署文档</strong>，并且<strong>参与全流程评审</strong>（需求/设计/测试/部署）。这是容易漏答的部分。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5: PMO 岗位职责 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">PMO 的主要职责是什么？</div>
+        <span class="q-tag blue">岗位职责</span>
+      </div>
+      <div class="qa-answer">
+        <p>PMO（项目管理办公室）职责分为四大块：</p>
+        <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-top:10px;">
+          <ul>
+            <li><strong>流程规范化管理</strong> — 审核、发布、归档项目流程规范，建立培训体系，不定期进行培训和考核</li>
+            <li><strong>实施流程审查</strong> — 审查项目立项/变更/结项流程及相关材料，符合标准后再流转</li>
+            <li><strong>过程监管</strong> — 监督里程碑节点完成情况和成果物检查；收集汇总绩效指标（计划制定/节点管理/成本管理/研发进度/风险识别及应对）</li>
+            <li><strong>项目集日常管理</strong>：
+              <ul>
+                <li>在<strong>湖楚系统、SVN、禅道</strong>中创建和维护项目信息，分配用户权限</li>
+                <li>组织项目周例会，记录问题和任务并跟踪完成情况</li>
+                <li>汇总整合周报、月报及过程信息数据</li>
+                <li><strong>系统版本发布：</strong>项目经理邮件通知某项目版本发布后，在项目发布栏进行版本发布；每周检查里程碑完成情况</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6: 需求分析流程 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">需求分析阶段产品经理做什么？有哪些产出物？</div>
+        <span class="q-tag amber">实操重点</span>
+      </div>
+      <div class="qa-answer">
+        <p><strong>需求分析流程（三步走）：</strong></p>
+        <div class="flow-row">
+          <div class="flow-node amber"><span class="label">①需求调研</span><span class="desc">调研计划→写需求说明书</span></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node amber"><span class="label">②功能设计</span><span class="desc">功能清单+原型→组内预审</span></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node amber"><span class="label">③需求评审</span><span class="desc">评审→修改→确认→录入禅道</span></div>
+        </div>
+        <p style="margin-top:10px;"><strong>产出物清单（按责任人区分）：</strong></p>
+        <div style="background:#f7fafc;border-radius:8px;padding:14px;margin-top:6px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;">
+            <div>📋 需求调研计划（PM·可选）</div>
+            <div>📄 需求调研材料（PM·必须）</div>
+            <div>📖 <strong>业务需求说明书</strong>（PM·必须）</div>
+            <div>📝 <strong>系统功能清单</strong>（PM·必须）</div>
+            <div>🎨 系统原型（PM·复杂功能必须）</div>
+            <div>📑 需求规格说明书（PM·视情况可选）</div>
+            <div>📊 流程图/UI图（PM·可选）</div>
+            <div>✅ <strong>需求确认单</strong>（PM·除产品类外必须）</div>
+            <div>✅ <strong>需求评审单</strong>（项目经理·必须）</div>
+          </div>
+        </div>
+        <div class="tip blue" style="margin-top:10px;">
+          <strong>💡 关键点：</strong>需求评审完成后，产品经理需在<strong>2天内</strong>将研发需求录入项目管理系统，且功能点数量/名称与功能清单完全一致。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q7: 文档格式规范 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">项目文档的格式要求是什么？</div>
+        <span class="q-tag blue">文档标准</span>
+      </div>
+      <div class="qa-answer">
+        <table class="data-table">
+          <tr><th style="width:18%;">指标项</th><th>格式要求</th></tr>
+          <tr>
+            <td><strong>文档命名</strong></td>
+            <td>「文档类型名称+文档版本号+项目」或「文档类型名称+文档版本号+系统名称+系统版本号+项目名称」<br>
+              <kbd>如：项目整体计划V1.0-江苏人社电子档案管理系统项目</kbd></td>
+          </tr>
+          <tr>
+            <td><strong>版本号</strong></td>
+            <td>文档版本号两位：草稿从<strong>0.1</strong>开始，每次修订增加0.1；审批通过从<strong>1.0</strong>开始，修订未审批时增加0.1，修订审核通过后增加1.0。系统版本号三位：1.0.0起</td>
+          </tr>
+          <tr>
+            <td><strong>文档内容</strong></td>
+            <td>首页 + 修订记录 + 目录 + 正文</td>
+          </tr>
+          <tr>
+            <td><strong>章节标题</strong></td>
+            <td>自动编号，按「一、」「1.1」「1.1.1」依次类推，不超5级，字体≤小四。可参照文档格式模板执行</td>
+          </tr>
+          <tr>
+            <td><strong>正文</strong></td>
+            <td>宋体小四、首行缩进2字符、1.5倍行距。表格内宋体五号、靠左对齐、1倍行距</td>
+          </tr>
+          <tr>
+            <td><strong>段落标题层级</strong></td>
+            <td>按「<strong>一、</strong>」→「<strong>（一）</strong>」→「<strong>1.</strong>」→「<strong>（1）</strong>」→「<strong>a.</strong>」顺序，可从某一级开始但不可跳级使用。可参照文档格式模板执行</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Q8: 设计开发流程 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">设计开发阶段产品经理的职责是什么？</div>
+        <span class="q-tag amber">实操重点</span>
+      </div>
+      <div class="qa-answer">
+        <p>设计开发阶段由 <strong>研发组主导</strong>，产品经理参与以下环节：</p>
+        <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:8px;padding:14px;">
+          <ul>
+            <li><strong>参加设计讨论和设计评审：</strong>对功能清单上标注的<strong>重难点功能</strong>参与评审，评审意见记录在功能清单，会后整改直至签字确认。同时<strong>参与用例评审</strong>，提出问题和整改意见</li>
+            <li><strong>每周功能验证：</strong>按《测试用例》对开发完成的功能进行验证——验证通过则转测试，不符合预期则<strong>打回处理</strong></li>
+            <li>产品验证仅做<strong>业务功能、页面UI</strong>方面验证，保障与业务需求描述一致</li>
+          </ul>
+        </div>
+        <div class="tip blue" style="margin-top:8px;">
+          <strong>📌 关键操作：</strong>产品经理验证通过后，在禅道上将研发需求状态改为「测试中」，并指派给测试人员。测试完毕后，产品经理重新验收 → 改为「已验收」。
+        </div>
+        <div class="tip" style="margin-top:6px;">
+          <strong>📌 注意：</strong>产品经理在功能验证时<strong>不负责性能和安全的测试</strong>，那是测试工程师的职责。产品经理只验证业务功能是否按需求实现了。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q9: 系统测试流程 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">内部测试和用户测试的区别？产品经理负责什么？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div style="background:#ebf8ff;border-radius:8px;padding:14px;">
+            <h4 style="font-size:14px;color:#2b6cb0;">🔬 内部测试</h4>
+            <p style="font-size:13px;color:#4a5568;">技术组长主导</p>
+            <ul style="font-size:12px;">
+              <li>技术组长填《测试申请单》提测</li>
+              <li>测试工程师搭建测试环境</li>
+              <li>依据《测试用例》测试</li>
+              <li>BUG录入禅道 → 开发处理</li>
+              <li>输出<kbd>《功能测试报告》《性能测试报告》《安全测试报告》</kbd><strong>（测试工程师）</strong></li>
+            </ul>
+          </div>
+          <div style="background:#fffaeb;border-radius:8px;padding:14px;">
+            <h4 style="font-size:14px;color:#b7791f;">👤 用户测试</h4>
+            <p style="font-size:13px;color:#4a5568;">产品类由产品经理主导/其他项目由项目经理主导</p>
+            <ul style="font-size:12px;">
+              <li>产品类：产品经理主导，对象为产品组</li>
+              <li>其他项目：项目经理主导，对象为客户</li>
+              <li><strong>项目经理</strong>根据《系统功能清单》确认测试功能（产品类项目由产品经理确认）</li>
+              <li><strong>项目经理组织团队输出《用户测试环境部署方案》</strong></li>
+              <li><strong>产品经理</strong>根据测试功能整理系统参数配置</li>
+              <li><strong>产品经理</strong>编制内部培训材料并培训→输出《内部培训签到表》</li>
+              <li><strong>项目经理</strong>组织用户培训→输出《用户培训签到表》</li>
+              <li><strong>产品经理/项目经理</strong>组织测试→问题记录到《项目问题跟踪表》</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tip" style="margin-top:10px;">
+          <strong>💡 注意：</strong>BUG修复及简单功能上线，可跳过用户测试。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q10: 部署上线 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">部署上线阶段产品经理需要准备什么材料？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <p>产品经理负责每次上线的 <strong>清单和系统配置材料</strong>：</p>
+        <ul>
+          <li>📋 <strong>子系统清单</strong>（否，有子系统时必须）</li>
+          <li>📋 <strong>系统模块清单</strong>（必须，每次保留单次并更新整体文档）</li>
+          <li>📋 <strong>系统功能清单</strong>（必须，每次保留单次并更新整体文档）</li>
+          <li>📋 <strong>系统权限清单</strong>（必须，每次保留单次并更新整体文档）</li>
+          <li>📋 <strong>系统配置文档</strong>（必须，每次保留单次并更新整体文档）</li>
+        </ul>
+        <p>配合项目经理：提供建议方案、参与部署方案评审。</p>
+      </div>
+    </div>
+
+    <!-- Q11: 变更流程 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">项目变更分哪两种情况？分别在什么条件下走什么流程？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <div style="border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;">
+          <div style="background:#f7fafc;padding:12px 16px;border-bottom:1px solid #e2e8f0;">
+            <span style="font-weight:600;">两种变更方式</span>
+          </div>
+          <div style="padding:14px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="background:#f0fff4;border-radius:8px;padding:12px;">
+                <p style="font-size:13px;font-weight:600;color:#276749;">🟢 邮件变更</p>
+                <p style="font-size:12px;color:#4a5568;"><strong>条件：</strong>不涉及最终结项节点 + 无成本变更</p>
+                <p style="font-size:12px;color:#4a5568;"><strong>操作：</strong><strong>项目经理</strong>修改《项目整体计划》→ PMO审核 → 内部邮件向<strong>项目交付组或产品组负责人</strong>发起变更</p>
+              </div>
+              <div style="background:#fff5f5;border-radius:8px;padding:12px;">
+                <p style="font-size:13px;font-weight:600;color:#c53030;">🔴 OA变更</p>
+                <p style="font-size:12px;color:#4a5568;"><strong>条件：</strong>涉及最终结项节点或成本变更</p>
+                <p style="font-size:12px;color:#4a5568;"><strong>操作：</strong><strong>项目经理</strong>修改《项目整体计划》+《项目研发成本及风险预估表》+填写《项目变更申请单》→ PMO审核 → OA发起 → 逐级审批</p>
+              </div>
+            </div>
+            <p style="font-size:12px;color:#718096;margin-top:8px;"><strong>归档材料：</strong>《项目变更申请表》（否，结项节点/成本变更时必须）、《项目研发成本及风险预估表》（否，成本变更时必须）、《项目整体实施计划》（否，里程碑调整时必须）</p>
+          </div>
+        </div>
+        <p style="font-size:12px;color:#718096;margin-top:6px;">变更审批通过后，项目经理应及时在项目管理系统上调整计划，并通知团队成员变更后的里程碑节点。</p>
+      </div>
+    </div>
+
+    <!-- Q12: 问题处理流程 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">问题处理流程是怎样的？产品经理做什么？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <p><strong>问题范围定义：</strong>项目问题包括项目需求评审完成直至项目运维的各阶段所发现的<strong>所有系统BUG、新需求，以及日常运维外的数据处理任务</strong>。</p>
+        <div class="flow-row">
+          <div class="flow-node"><span class="label">①发现问题</span><span class="desc">记录到问题跟踪表</span></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node amber"><span class="label">②问题分类</span><span class="desc">产品经理负责</span></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node"><span class="label">③评估工作量</span><span class="desc">技术组长</span></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node green"><span class="label">④排期处理</span><span class="desc">项目经理</span></div>
+        </div>
+        <p style="margin-top:10px;"><strong>产品经理在问题处理中的职责：</strong></p>
+        <ul>
+          <li>问题由项目经理/运维人员或其他成员发起，首先将问题<strong>记录到《项目问题跟踪表》</strong>并反馈给产品经理</li>
+          <li>产品经理接到问题后先 <strong>分类</strong>：新需求 → 与项目经理沟通确认必要性后进行初步需求设计；系统BUG → 转测试人员复现</li>
+          <li>新功能点 → 录入为新的研发需求</li>
+          <li>已有功能改动/BUG → 对现有研发需求进行变更</li>
+          <li>每周汇总各项目问题处理情况</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q13: 制度的三个目的 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">制定项目实施管理制度的三个目的是什么？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>标准化规范化管控</strong> — 对项目全生命周期标准化管控，每个步骤都有明确指导文件，划分责任范围，提升沟通和工作效率</li>
+          <li><strong>可追溯性</strong> — 确保历史项目和项目历史情况有证可查，为后续执行提供支持</li>
+          <li><strong>成本控制</strong> — 加强对项目成本控制与核算，最终实现节约成本、提高利润</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q14: 五类项目分类 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">公司软件项目分为哪五类？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="background:#ebf8ff;border-radius:8px;padding:12px;">
+            <p style="font-weight:600;font-size:14px;color:#2b6cb0;">🏭 产品类</p>
+            <p style="font-size:12px;color:#4a5568;">公司内部、自有资金投资的产品研发/预研</p>
+          </div>
+          <div style="background:#f0fff4;border-radius:8px;padding:12px;">
+            <p style="font-weight:600;font-size:14px;color:#276749;">🔧 实施类</p>
+            <p style="font-size:12px;color:#4a5568;">根据外部客户要求开发/改造/升级信息系统</p>
+          </div>
+          <div style="background:#fffaeb;border-radius:8px;padding:12px;">
+            <p style="font-weight:600;font-size:14px;color:#b7791f;">🛡️ 运维类</p>
+            <p style="font-size:12px;color:#4a5568;">基础设施维护管理（收费运维/质保运维）</p>
+          </div>
+          <div style="background:#faf5ff;border-radius:8px;padding:12px;">
+            <p style="font-weight:600;font-size:14px;color:#6b46c1;">🤝 股份支撑类</p>
+            <p style="font-size:12px;color:#4a5568;">为集团股份公司及兄弟公司提供支撑保障</p>
+          </div>
+          <div style="background:#fff5f5;border-radius:8px;padding:12px;grid-column:1/-1;">
+            <p style="font-weight:600;font-size:14px;color:#c53030;">📦 外包类</p>
+            <p style="font-size:12px;color:#4a5568;">外包给第三方实施，公司统一管控</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q15: 紧急问题处理 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">紧急问题怎么处理？和常规问题流程有什么区别？</div>
+        <span class="q-tag amber">实操重点</span>
+      </div>
+      <div class="qa-answer">
+        <div style="background:#fff5f5;border:1px solid #fed7d7;border-radius:8px;padding:14px;margin-bottom:10px;">
+          <p style="font-weight:600;color:#c53030;">🚨 紧急问题处理流程</p>
+          <p style="font-size:13px;color:#4a5568;line-height:1.8;">
+            时间有限时 → 可<strong>同步开展</strong>需求分析、设计开发等工作<br>
+            → 事后在指定时间内<strong>补全过程文档</strong><br>
+            → 如果紧急到需要<strong>立即处理和发版</strong>且连正规测试流程都来不及 → <strong>邮件上报公司领导</strong>获得批准<br>
+            → 直接由<strong>现场实施人员</strong>验证发版
+          </p>
+        </div>
+        <p style="font-size:13px;color:#4a5568;"><strong>与常规流程的区别：</strong>常规流程必须按顺序走完需求→设计→测试→部署的完整流程。紧急流程允许并行推进，但必须在指定时间内补完文档。</p>
+      </div>
+    </div>
+
+    <!-- Q16: 文档归档时间要求 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">项目过程文档归档有什么时间要求？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li>按照<strong>附表A（项目整体归档材料清单）</strong>要求定期归档</li>
+          <li>《项目整体计划》中里程碑节点所列的文档，必须在<strong>里程碑节点关闭前</strong>完成归档</li>
+          <li><strong>否则视为节点延期</strong></li>
+          <li>需审核文档归档的里程碑节点：需求评审、设计评审、用例评审、内部测试、部署发布</li>
+          <li><strong>小版本迭代</strong>可以先开展后补材料，但必须在里程碑节点<strong>当周内</strong>补完关键材料</li>
+          <li>需求评审完成后，项目经理关闭需求评审节点，产品经理需在<strong>评审完2天内</strong>将研发需求录入项目管理系统</li>
+          <li>项目经理每周末前检查文档上传情况，核对规范性，督促整改</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q17: 安全培训 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">数据安全管理有哪些核心要求？</div>
+        <span class="q-tag red">必考 ⚠️</span>
+      </div>
+      <div class="qa-answer">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="background:#f7fafc;border-radius:8px;padding:14px;">
+            <h4 style="font-size:14px;font-weight:600;color:#2d3748;">🖥️ 设备安全</h4>
+            <p style="font-size:12px;color:#4a5568;line-height:1.8;">
+              🔴 <strong>严禁</strong>：私接设备、私改配置、装游戏、装黑客工具<br>
+              🟢 <strong>日常</strong>：离席锁屏（Win+L）、下班关机关显示器<br>
+              🔵 <strong>网络</strong>：IP由IT分配，严禁私改
+            </p>
+          </div>
+          <div style="background:#f7fafc;border-radius:8px;padding:14px;">
+            <h4 style="font-size:14px;font-weight:600;color:#2d3748;">🔑 密码管理</h4>
+            <p style="font-size:18px;font-weight:800;color:#4facfe;text-align:center;margin:4px 0;">8—3—90—5—5</p>
+            <p style="font-size:12px;color:#4a5568;line-height:1.6;">
+              <strong>8位</strong>以上 + <strong>3种</strong>字符组合<br>
+              <strong>90天</strong>更换 + 历史密码<strong>5次</strong>内不重复<br>
+              <strong>5次</strong>错误锁定 + 间隔一定时间自动解锁</p>
+          </div>
+          <div style="background:#f7fafc;border-radius:8px;padding:14px;grid-column:span 1;">
+            <h4 style="font-size:14px;font-weight:600;color:#2d3748;">📁 敏感数据</h4>
+            <p style="font-size:12px;color:#4a5568;line-height:1.8;">
+              📛 <strong>红线</strong>：不存本地、不上传SVN、不公共社交工具传<br>
+              ✅ <strong>规范</strong>：最小化原则、脱敏处理、即用即删、加密传递<br>
+              🔍 <strong>自查</strong>：远望设备或python脚本自查，日志打包上传ftp
+            </p>
+          </div>
+          <div style="background:#f7fafc;border-radius:8px;padding:14px;">
+            <h4 style="font-size:14px;font-weight:600;color:#2d3748;">🔍 自查流程</h4>
+            <p style="font-size:12px;color:#4a5568;line-height:1.8;">
+              有远望设备 → 配置精细检查（<strong>勾选手机号+身份证号</strong> + 检查压缩文件 + 检查全部 + 单个文件命中<strong>10次</strong>就上报）<br>
+              无设备 → python3 + digg.py脚本自查（需先pip install xlrd==1.2.0）<br>
+              发现敏感数据需立即删除，处理后<strong>重新自查一次</strong><br>
+              自查结果打包为「<strong>部门-姓名-时间</strong>.zip」，上传ftp</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q18: 项目经理过程监控5点 + 技术组长3点 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">项目经理和技术组长在项目过程中的监控点分别是什么？</div>
+        <span class="q-tag red">必考 ⚠️</span>
+      </div>
+      <div class="qa-answer">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div style="background:#ebf8ff;border-radius:10px;padding:16px;">
+            <h4 style="font-size:14px;font-weight:700;color:#2b6cb0;margin-bottom:8px;">📊 项目经理5个监控点</h4>
+            <ol style="font-size:13px;color:#4a5568;line-height:2;padding-left:16px;">
+              <li><strong>关注里程碑</strong> — 时刻关注完成状态，督促团队<strong>及时在系统上关闭节点</strong>。超期/预计超期 → 立即发起项目变更</li>
+              <li><strong>关注研发需求填报</strong> — 确保与评审内容一致</li>
+              <li><strong>关注每周功能开发</strong> — 未验证的督促PM验证，延期的督促<strong>技术组长和开发工程师</strong>制定应对措施<strong>并执行</strong></li>
+              <li><strong>关注工时填报</strong> — 确保项目工时与分配任务相符</li>
+              <li><strong>关注问题跟踪表</strong> — 及时组织问题流转处理</li>
+            </ol>
+          </div>
+          <div style="background:#f0fff4;border-radius:10px;padding:16px;">
+            <h4 style="font-size:14px;font-weight:700;color:#276749;margin-bottom:8px;">🔧 技术组长3个监控点</h4>
+            <ol style="font-size:13px;color:#4a5568;line-height:2;padding-left:16px;">
+              <li><strong>关注每周功能开发</strong> — 延期功能制定应对措施并督促执行</li>
+              <li><strong>关注开发人员工时</strong> — 确保与分配任务相符</li>
+              <li><strong>关注代码质量</strong> — 对代码质量低、Bug率超标人员进行培训指导</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q18b: 核心岗位职责总体要求 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">《核心岗位职责》开头的6条总体要求是什么？</div>
+        <span class="q-tag blue">岗位职责</span>
+      </div>
+      <div class="qa-answer">
+        <ol style="font-size:14px;color:#4a5568;line-height:2.2;padding-left:18px;">
+          <li>公司统一制定项目流程规范，<strong>所有成员应遵循规范</strong>进行项目开展和文档输出</li>
+          <li>各职能组制定符合职能特点的<strong>详细技术要求、文档规范、执行标准</strong>，上报公司审核备案</li>
+          <li>各职能负责人具备下属人员的<strong>职业能力建设职责</strong>（业务培训、能力培养、职业指导）</li>
+          <li>各职能负责人负责下属人员的<strong>工作任务分派、工作成果检查</strong>，按要求评定工作绩效</li>
+          <li>原则上各职组按岗位职责要求开展工作，<strong>发挥专业能力优势</strong></li>
+          <li><strong>特殊情况</strong>可以安排超出岗位职责的临时紧急任务，成员应向直接上级分管领导沟通后配合工作</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Q18c: 禅道系统版本创建 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">禅道上系统版本怎么创建？版本名称和阶段怎么选？</div>
+        <span class="q-tag amber">禅道实操</span>
+      </div>
+      <div class="qa-answer">
+        <div style="background:#f7fafc;border-radius:8px;padding:14px;">
+          <p style="font-weight:600;color:#2d3748;">📍 操作路径（项目经理操作，产品经理需了解）：</p>
+          <ol style="padding-left:18px;font-size:13px;line-height:2.2;margin-top:8px;">
+            <li>迭代计划填报完后立即进行系统版本创建</li>
+            <li>在「<strong>系统版本</strong>」栏目，点击创建已确认的版本</li>
+            <li><strong>版本名称必须与迭代名称保持一致</strong>，如「DZDAV4.3.1」</li>
+            <li><strong>阶段必须选择</strong>「设计开发-编码自测」</li>
+            <li>版本发布前，需要在版本中<strong>关联研发需求</strong></li>
+            <li>每个版本上线后，<strong>邮件通知PMO</strong>版本发布，并关闭迭代中的「部署发布」阶段</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- PHASE 2: 第二周考核 - 公共服务业务 + 需求修正 -->
+  <!-- ============================================================ -->
+  <section class="section" id="phase2">
+    <div class="phase-header">
+      <div class="phase-badge p2">📝 第二周考核</div>
+      <span style="font-size:13px;color:#a0aec0;">7/20-24 · 公共服务业务+需求修正 · 内部讲解</span>
+    </div>
+    <div class="section-header">
+      <h2>Q21~Q27：业务理解·功能清单·禅道操作</h2>
+      <span class="note">来源：项目监控和操作指引 + 项目管理制度</span>
+    </div>
+    <div class="section-desc">
+      考核点：能清晰讲解业务需求、版本排期、功能清单与原型对照、禅道需求录入操作
+    </div>
+
+    <!-- Q13: 内部讲解框架 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">内部讲解业务需求说明书时，应该按什么框架讲？</div>
+        <span class="q-tag amber">考核模板</span>
+      </div>
+      <div class="qa-answer">
+        <div style="background:#fffaeb;border:1px solid #fefcbf;border-radius:10px;padding:16px;">
+          <p style="font-weight:600;margin-bottom:8px;">🎤 内部讲解标准框架</p>
+          <ol style="padding-left:20px;font-size:14px;color:#4a5568;line-height:2;">
+            <li><strong>项目背景</strong> — 什么项目、客户是谁、建设目标是什么</li>
+            <li><strong>版本范围</strong> — 当前版本包含哪些功能、版本号、排期</li>
+            <li><strong>功能清单概览</strong> — 子系统→模块→功能点 分层介绍</li>
+            <li><strong>重点功能讲解</strong> — 挑3-5个核心功能展开（业务场景→操作流程→交互细节）</li>
+            <li><strong>原型对照</strong> — 打开原型逐页对照功能清单讲解</li>
+            <li><strong>边界/异常情况</strong> — 特殊权限、数据校验、异常流程</li>
+            <li><strong>遗留问题</strong> — 待确认项、待优化项、已知限制</li>
+          </ol>
+          <div class="tip blue" style="margin-top:10px;">
+            <strong>⭐ 考核要点：</strong>领导会看你能不能「讲清楚」——不只是背功能，而是说明白「为什么这么做」「用户怎么用」「边界怎么处理」。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q14: 禅道需求录入 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">禅道中如何录入研发需求？</div>
+        <span class="q-tag amber">禅道实操</span>
+      </div>
+      <div class="qa-answer">
+        <p><strong>操作路径及要点（按顺序）：</strong></p>
+        <div style="background:#f7fafc;border-radius:8px;padding:14px;margin:8px 0;">
+          <p style="font-weight:600;color:#2d3748;">📍 入口：产品型→产品/研发需求栏；项目型→项目/研发需求栏</p>
+          <ol style="padding-left:18px;font-size:13px;line-height:2.2;">
+            <li><strong>产品经理维护系统模块</strong> — 先建模块，一级模块取名如「电子档案管理系统」，按功能清单维护到功能级</li>
+            <li><strong>产品经理录入研发需求</strong> — 选对应模块，命名格式：<kbd>【最下级模块名称】功能名（迭代版本号）</kbd></li>
+            <li style="list-style:none;margin-left:-18px;">如：<kbd>【档案收集】归档（V4.3.1）</kbd></li>
+            <li><strong>产品经理点击评审</strong> — 录入完成后点「评审」按钮，可批量评审</li>
+            <li><strong>产品经理关联研发需求</strong> — 进入「设计开发-编码自测」阶段执行模块，点击「关联研发需求」全选保存，<strong>确保需求功能点和开发功能点数量一致</strong></li>
+            <li><strong>产品经理功能验证转测试</strong> — 验证通过后，将研发需求阶段改为「测试中」→ 指派给测试人员</li>
+            <li><strong>产品经理功能验收</strong> — 测试完毕后，产品经理重新验收 → 改为「已验收」</li>
+          </ol>
+        </div>
+        <div class="tip">
+          <strong>⚠️ 关键点：</strong>确保功能点数量、名称与功能清单<strong>完全一致</strong>。评审完后<strong>2天内</strong>完成录入。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q15: 迭代计划 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">禅道中如何填写迭代计划？阶段命名有什么规范？</div>
+        <span class="q-tag amber">禅道实操</span>
+      </div>
+      <div class="qa-answer">
+        <p><strong>项目经理操作，产品经理需了解：</strong></p>
+        <div style="background:#f7fafc;border-radius:8px;padding:14px;margin:8px 0;">
+          <ol style="padding-left:18px;font-size:13px;line-height:2.2;">
+            <li>先在模板制定迭代计划，<strong>标红节点必须有</strong>且名称与模板一致</li>
+            <li>项目模块 → 选中项目 → 设置阶段</li>
+            <li><strong>主阶段</strong>命名：<kbd>系统编号+版本号</kbd>，如「DZDAV4.3.1」</li>
+            <li><strong>子阶段</strong>命名：<kbd>阶段名称-具体任务</kbd>，如「需求分析-需求评审」</li>
+            <li>里程碑节点全部选择「是」</li>
+            <li>阶段开始/关闭：完成后关闭阶段并填写备注</li>
+            <li>关闭需求评审/设计评审阶段时备注需写 <kbd>功能点：210个</kbd></li>
+          </ol>
+        </div>
+        <p style="font-size:13px;color:#718096;"><strong>注意：</strong>设计评审和用例评审时间<strong>相隔不超过一周</strong>。计划制定完成并通知团队成员确认后及时在SVN中归档。</p>
+      </div>
+    </div>
+
+    <!-- Q16: 项目监控 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">项目经理周监控的6个维度是什么？</div>
+        <span class="q-tag blue">操作指引</span>
+      </div>
+      <div class="qa-answer">
+        <p>每周日之前完成填报，周一上午出监控数据，周例会通报：</p>
+        <table class="data-table">
+          <tr><th style="width:16%;">维度</th><th>监控内容</th><th style="width:30%;">异常判定</th></tr>
+          <tr>
+            <td><strong>①计划填报</strong></td>
+            <td>是否按时填报迭代计划</td>
+            <td>未按时/不规范填报</td>
+          </tr>
+          <tr>
+            <td><strong>②里程碑</strong></td>
+            <td>节点是否按时完成</td>
+            <td>红色预警 / 文档未归档</td>
+          </tr>
+          <tr>
+            <td><strong>③功能填报</strong></td>
+            <td>产品经理评审完2天内录入研发需求</td>
+            <td>红色预警 / 与功能清单不一致</td>
+          </tr>
+          <tr>
+            <td><strong>④任务分配</strong></td>
+            <td>技术组长评审完2天内拆解开发任务</td>
+            <td>一级任务与研发需求不对应</td>
+          </tr>
+          <tr>
+            <td><strong>⑤开发进度</strong></td>
+            <td>每周功能完成情况</td>
+            <td>产品验证未通过 / 功能延期</td>
+          </tr>
+          <tr>
+            <td><strong>⑥总体成本</strong></td>
+            <td>已用成本 vs 计划成本</td>
+            <td>已用 > 计划</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Q17: 文档上传 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">SVN文档归档的文件夹结构和上传规范是什么？</div>
+        <span class="q-tag blue">操作指引</span>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>项目文件夹</strong> — 根据项目整体文档清单建到「材料子类」即可</li>
+          <li><strong>立项/变更材料</strong> — 每一次单独建文件夹，材料放一起</li>
+          <li><strong>单版本迭代材料</strong> — 在SVN对应阶段的「单版本迭代材料」下建版本文件夹</li>
+          <li>需求评审/设计评审/用例评审可以一起进行，但<strong>必须有分开的评审单</strong></li>
+          <li>部署方案评审在<strong>1.0.0版本必须进行</strong>，迭代版本不涉及部署方案改动可跳过</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q18: 提测发版 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">系统提测和发版的流程区别？</div>
+        <span class="q-tag blue">操作指引</span>
+      </div>
+      <div class="qa-answer">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div style="background:#ebf8ff;border-radius:8px;padding:14px;">
+            <h4 style="font-size:14px;color:#2b6cb0;margin-bottom:6px;">🧪 提测流程</h4>
+            <p style="font-size:12px;color:#4a5568;line-height:2;">
+              技术组长发起 → 填写《测试申请单》<br>
+              → 发邮件给测试人员+项目经理<br>
+              → 测试人员完成测试后回复邮件<br>
+              → 附测试报告
+            </p>
+          </div>
+          <div style="background:#fff5f5;border-radius:8px;padding:14px;">
+            <h4 style="font-size:14px;color:#c53030;margin-bottom:6px;">🚀 发版流程</h4>
+            <p style="font-size:12px;color:#4a5568;line-height:2;">
+              项目经理/运维人员现场验证完成<br>
+              → 邮件带上《上线申请单》+附件<br>
+              → 发给项目经理+团队成员<br>
+              → 完成后再转发PMO+上级领导
+            </p>
+          </div>
+        </div>
+        <div class="tip" style="margin-top:10px;">
+          <strong>⚠️ 两者必须分开邮件发送</strong>，不能合并。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q19: 问题监控时间标准 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">问题处理情况监控的标准是什么？</div>
+        <span class="q-tag blue">操作指引</span>
+      </div>
+      <div class="qa-answer">
+        <p>根据《项目问题跟踪表》的检查情况汇总异常项：</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;">
+          <div style="background:#fff5f5;border-radius:8px;padding:14px;">
+            <p style="font-size:14px;font-weight:600;color:#c53030;">🔴 高-立即处理</p>
+            <p style="font-size:13px;color:#4a5568;">状态为「待任务排期」且距离提出时间 <strong>超过5天（不含5天）</strong> → 异常</p>
+          </div>
+          <div style="background:#fffaeb;border-radius:8px;padding:14px;">
+            <p style="font-size:14px;font-weight:600;color:#b7791f;">🟡 中-排期处理</p>
+            <p style="font-size:13px;color:#4a5568;">状态为「待任务排期」且距离提出时间 <strong>超过15天（不含15天）</strong> → 异常</p>
+          </div>
+        </div>
+        <p>产品组每周一汇总项目问题跟踪表异常，将异常数据和本周新增迭代版本提交PMO。</p>
+      </div>
+    </div>
+
+    <!-- Q20: 计划调整 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">迭代计划中未完成的里程碑节点怎么调整？</div>
+        <span class="q-tag blue">操作指引</span>
+      </div>
+      <div class="qa-answer">
+        <p><strong>调整规范：</strong></p>
+        <ul>
+          <li>本周有未完成的里程碑节点，且无法通过加班完成的 → 可调整迭代计划</li>
+          <li>形成<strong>2.0或更高版本</strong>的迭代计划</li>
+          <li><strong>项目经理</strong>发邮件给<strong>上级领导和PMO</strong>，回复通过后在禅道上变更</li>
+          <li>调整后需要在<strong>下周之前</strong>完成</li>
+        </ul>
+        <div class="tip green" style="margin-top:6px;">
+          <strong>✅ 注意：</strong>理由合理且不影响客户交付的，准许计划变更，不会计入绩效扣分。
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- PHASE 3: 第三周考核 - 功能设计掌握 + 评审复现 -->
+  <!-- ============================================================ -->
+  <section class="section" id="phase3">
+    <div class="phase-header">
+      <div class="phase-badge p3">🎤 第三周考核</div>
+      <span style="font-size:13px;color:#a0aec0;">7/27-28 · 功能设计掌握+需求评审复现</span>
+    </div>
+    <div class="section-header">
+      <h2>Q28~Q33：功能设计·评审演练·交付结项</h2>
+      <span class="note">考核日：抽部分功能点复现需求评审讲解</span>
+    </div>
+    <div class="section-desc">
+      核心考核方式：领导抽部分功能点，你现场复现一次完整的需求评审讲解，包含背景说明→功能逻辑→交互流程→边界情况→回答提问
+    </div>
+
+    <!-- Q19: 复现评审流程 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">需求评审复现讲解的标准步骤是什么？（考核日核心流程）</div>
+        <span class="q-tag red">🏁 考核核心</span>
+      </div>
+      <div class="qa-answer">
+        <div style="background:#fff5f5;border:1px solid #fed7d7;border-radius:10px;padding:20px;">
+          <p style="font-size:15px;font-weight:700;color:#c53030;margin-bottom:14px;">🎯 考核日现场复现 — 五步法</p>
+
+          <div style="display:grid;gap:12px;">
+            <div style="background:#ffffff;border-radius:8px;padding:14px;border-left:4px solid #4facfe;">
+              <p style="font-weight:600;font-size:14px;">第1步 · 背景说明</p>
+              <p style="font-size:13px;color:#4a5568;">这个功能解决什么业务问题？用户是谁？在什么场景下使用？</p>
+            </div>
+            <div style="background:#ffffff;border-radius:8px;padding:14px;border-left:4px solid #f6ad55;">
+              <p style="font-weight:600;font-size:14px;">第2步 · 功能逻辑</p>
+              <p style="font-size:13px;color:#4a5568;">功能的核心逻辑是什么？输入→处理→输出 是什么？涉及哪些业务规则/数据校验？</p>
+            </div>
+            <div style="background:#ffffff;border-radius:8px;padding:14px;border-left:4px solid #68d391;">
+              <p style="font-weight:600;font-size:14px;">第3步 · 交互流程</p>
+              <p style="font-size:13px;color:#4a5568;">用户操作路径：从哪进→看到什么→操作什么→到哪去。对照原型逐页讲。</p>
+            </div>
+            <div style="background:#ffffff;border-radius:8px;padding:14px;border-left:4px solid #fc8181;">
+              <p style="font-weight:600;font-size:14px;">第4步 · 边界情况</p>
+              <p style="font-size:13px;color:#4a5568;">异常数据、权限控制、超时处理、空状态、并发冲突等边界条件怎么处理？</p>
+            </div>
+            <div style="background:#ffffff;border-radius:8px;padding:14px;border-left:4px solid #b794f4;">
+              <p style="font-weight:600;font-size:14px;">第5步 · 回答提问</p>
+              <p style="font-size:13px;color:#4a5568;">评委（领导/同事）提问 — 回答要站在业务价值和用户体验角度</p>
+            </div>
+          </div>
+        </div>
+        <div class="tip blue" style="margin-top:10px;">
+          <strong>💡 备战建议：</strong>选3-5个核心功能点，每个功能点按上面五步法写逐字稿演练。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q20: 功能清单理解 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">如何理解「功能清单」的完整结构？</div>
+        <span class="q-tag red">🏁 考核核心</span>
+      </div>
+      <div class="qa-answer">
+        <p>功能清单按 <strong>子系统 → 模块 → 功能点</strong> 三级结构组织：</p>
+        <div style="background:#f7fafc;border-radius:8px;padding:14px;margin:8px 0;">
+          <p style="font-size:13px;font-family:monospace;color:#4a5568;line-height:2;">
+            系统名称（如：公共服务事项系统）<br>
+            ├── 子系统A（如：事项管理）<br>
+            │   ├── 模块A.1（如：事项录入）<br>
+            │   │   ├── 功能点A.1.1（如：新增事项）<br>
+            │   │   ├── 功能点A.1.2（如：编辑事项）<br>
+            │   │   └── 功能点A.1.3（如：删除事项）<br>
+            │   └── 模块A.2（如：事项审批）<br>
+            │       ├── 功能点A.2.1（如：审批流程）<br>
+            │       └── 功能点A.2.2（如：审批意见）<br>
+            └── 子系统B ...
+          </p>
+        </div>
+        <p><strong>标注信息：</strong>每个功能点需标注优先级、开发状态、是否涉及性能测试。</p>
+        <div class="tip blue" style="margin-top:8px;">
+          ⭐ 能对着功能清单不看原型，说出每个功能点做什么、为什么做、怎么做。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q21: 验收结项 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">验收结项流程是怎样的？产品经理要做什么？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <div class="flow-row">
+          <div class="flow-node amber"><span class="label">①补充文档</span><span class="desc">需求规格/详细设计后补</span></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node amber"><span class="label">②整理验收</span><span class="desc">按客户/监理要求整理</span></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node amber"><span class="label">③项目验收</span><span class="desc">验收会→获取验收单</span></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node amber"><span class="label">④项目交接</span><span class="desc">交接会→交接单</span></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node amber"><span class="label">⑤项目结项</span><span class="desc">填写结项单→OA审批</span></div>
+        </div>
+        <p style="margin-top:10px;"><strong>产品经理在结项中的职责：</strong></p>
+        <ul>
+          <li>补充 <strong>产品文档</strong>（需求材料等）</li>
+          <li>参与项目交接会，交接需求材料</li>
+          <li>确保需求描述与线上系统一致</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q22: 项目交接 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">项目交接的核心材料有哪些？产品经理交什么？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <p>根据附表B，产品经理（产品组）需交接的 <strong>必须材料</strong>：</p>
+        <table class="data-table">
+          <tr><th>材料</th><th>审核要点</th></tr>
+          <tr><td>📖 业务需求说明书</td><td>系统常用业务场景有对应说明，符合公司需求文档标准</td></tr>
+          <tr><td>📋 系统清单</td><td>与线上系统一致</td></tr>
+          <tr><td>📋 系统模块清单</td><td>与线上系统一致</td></tr>
+          <tr><td>📋 系统功能清单</td><td>与线上系统一致</td></tr>
+          <tr><td>📋 系统权限清单</td><td>与线上系统一致</td></tr>
+          <tr><td>📑 需求规格说明书</td><td class="highlight">可选（推荐有）</td></tr>
+        </table>
+        <div class="tip" style="margin-top:8px;">
+          <strong>⚠️ 注意：</strong>客户验收材料不能完全作为项目交接材料。交接时项目管理委员会和其他职能负责人会对内容进行抽查。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q23: 员工入职需要确认的权限 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">产品经理入职需要开通哪些系统和工具？</div>
+        <span class="q-tag blue">工具速查</span>
+      </div>
+      <div class="qa-answer">
+        <table class="data-table">
+          <tr><th>工具/系统</th><th>用途</th></tr>
+          <tr><td>🏢 北森OA</td><td>打卡、加班、出差、请假、培训、绩效</td></tr>
+          <tr><td>🏢 集团OA</td><td>报销、邮件、立项、变更、结项</td></tr>
+          <tr><td>📊 湖楚工作管理系统</td><td>日报提交、项目异常监控（每日必用）</td></tr>
+          <tr><td>📌 禅道</td><td>项目过程管理、需求流转、任务管理</td></tr>
+          <tr><td>📁 SVN</td><td>制度文档、过程模板、文档存档（所有规范源头）</td></tr>
+          <tr><td>✏️ Axure</td><td>产品原型设计</td></tr>
+          <tr><td>🎨 蓝湖</td><td>原型发布、设计稿管理</td></tr>
+          <tr><td>📄 金山在线文档</td><td>评审签字、协作编辑（评审流程核心）</td></tr>
+          <tr><td>📄 腾讯在线文档</td><td>月/周任务、工作协作、问题跟踪</td></tr>
+          <tr><td>📈 Visio</td><td>流程图绘制</td></tr>
+          <tr><td>🧠 Xmind</td><td>思维导图、梳理产品结构</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Q24: 运维阶段 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">项目运维阶段有哪些日常工作？</div>
+        <span class="q-tag blue">管理制度</span>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>巡检</strong><strong>（运维人员）</strong> — 对服务器、中间件、应用程序、业务功能、业务数据定期巡检 → 输出《项目巡检记录》</li>
+          <li><strong>问题处理</strong><strong>（运维人员/项目经理）</strong> — 记录问题和客户需求，配合测评工作，按问题处理流程排期</li>
+          <li><strong>部署支持</strong><strong>（运维人员/技术组长）</strong> — 服务器漏洞修复、中间件更新、应用程序更新、参数配置和功能验证</li>
+          <li><strong>客户回访</strong><strong>（项目经理）</strong> — 满意度调查</li>
+          <li><strong>信息安全管理</strong><strong>（运维主管）</strong> — 安全设备管理、安全培训、安全检查</li>
+        </ul>
+        <p style="margin-top:8px;"><strong>运维归档材料：</strong>运维服务方案、部署手册、发布程序包、运维配置项清单、巡检记录等</p>
+      </div>
+    </div>
+
+    <!-- Q25: 系统版本号规则 -->
+    <div class="qa-card">
+      <div class="qa-question">
+        <div class="q-icon">Q</div>
+        <div class="q-text">系统版本号的三位数字各代表什么含义？</div>
+        <span class="q-tag blue">文档标准</span>
+      </div>
+      <div class="qa-answer">
+        <p>系统版本号为 <strong>三位</strong>：<kbd>X.Y.Z</kbd></p>
+        <table class="data-table">
+          <tr><th style="width:16%;">位</th><th>变化条件</th><th>示例</th></tr>
+          <tr>
+            <td><strong>X（主版本）</strong></td>
+            <td>系统框架重构 或 产品版本升级</td>
+            <td>1.0.0 → <strong>2</strong>.0.0</td>
+          </tr>
+          <tr>
+            <td><strong>Y（次版本）</strong></td>
+            <td>新功能增加 或 原有需求调整</td>
+            <td>1.0.0 → 1.<strong>1</strong>.0</td>
+          </tr>
+          <tr>
+            <td><strong>Z（修订号）</strong></td>
+            <td>仅做BUG修复</td>
+            <td>1.0.0 → 1.0.<strong>1</strong></td>
+          </tr>
+        </table>
+        <p style="margin-top:6px;">第一版上线后为 <strong>1.0.0</strong>。</p>
+        <div class="tip blue" style="margin-top:8px;">
+          <strong>📌 文档版本号 vs 系统版本号：</strong>文档版本号两位（0.1→1.0→1.1→2.0），系统版本号三位（1.0.0→1.1.0→1.0.1）<strong>，两者不同，不要混淆。</strong>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- 考前速记 -->
+  <!-- ============================================================ -->
+  <section class="section" id="quick">
+    <div class="section-header">
+      <h2>⚡ 考前速记 · 7/28 考核日冲刺</h2>
+      <span class="note">最后复习，记住这些就够了</span>
+    </div>
+
+    <div class="memory-cards">
+      <div class="mem-card">
+        <div class="big-num red">4</div>
+        <div class="mem-label">四类管理红线</div>
+        <div class="mem-detail"><strong>私</strong>自动工 · <strong>私</strong>交代码 · <strong>数据</strong>安全 · <strong>质量</strong>事故</div>
+      </div>
+      <div class="mem-card">
+        <div class="big-num">7</div>
+        <div class="mem-label">项目管理七阶段</div>
+        <div class="mem-detail">立项→需求→设计开发→测试→部署上线→验收结项→运维</div>
+      </div>
+      <div class="mem-card">
+        <div class="big-num amber">2</div>
+        <div class="mem-label">评审完成后2天内</div>
+        <div class="mem-detail">产品经理2天内录入研发需求<br>技术组长2天内拆解开发任务</div>
+      </div>
+      <div class="mem-card">
+        <div class="big-num green">6</div>
+        <div class="mem-label">项目周监控6维度</div>
+        <div class="mem-detail">计划·里程碑·功能填报·任务分配·开发进度·成本</div>
+      </div>
+      <div class="mem-card">
+        <div class="big-num" style="font-size:24px;">五步法</div>
+        <div class="mem-label">考核复现流程</div>
+        <div class="mem-detail">背景→逻辑→交互→边界→问答</div>
+      </div>
+      <div class="mem-card">
+        <div class="big-num green">3+1</div>
+        <div class="mem-label">产品经理产出必须文档<br>+项目经理产出1项</div>
+        <div class="mem-detail">PM：业务需求说明书+系统功能清单+需求调研材料<br>PMO/项目经理：需求评审单</div>
+      </div>
+      <div class="mem-card">
+        <div class="big-num amber">5</div>
+        <div class="mem-label">制度三个目的</div>
+        <div class="mem-detail">标准化规范化·可追溯性·成本控制</div>
+      </div>
+      <div class="mem-card">
+        <div class="big-num" style="font-size:24px;">X.Y.Z</div>
+        <div class="mem-label">系统版本号三位</div>
+        <div class="mem-detail">X=框架重构<br>Y=新功能<br>Z=Bug修复</div>
+      </div>
+    </div>
+
+    <div class="quick-grid">
+      <div class="quick-card">
+        <h3>📋 第一周问答速记</h3>
+        <ul>
+          <li>七阶段：<strong>立-需-设-测-上-验-维</strong></li>
+          <li>制度三目的：<strong>标准化·可追溯·控成本</strong></li>
+          <li>五类项目：<strong>产品·实施·运维·股份支撑·外包</strong></li>
+          <li>四红线：<strong>私自动工·私交代码·数据安全·质量事故</strong></li>
+          <li>产品经理在 <strong>产品组</strong></li>
+          <li>变更：结项节点/成本不变⇒<strong>邮件</strong>；变了⇒<strong>OA</strong></li>
+          <li>文档命名：<kbd>名称+版本+项目/系统</kbd></li>
+          <li>版本号：草稿 <strong>0.1</strong> 起，审批 <strong>1.0</strong> 起</li>
+          <li>系统版本号：<strong>X.Y.Z</strong>（重构·新功能·修Bug）</li>
+          <li>问题分类：<strong>产品经理负责</strong></li>
+          <li>紧急问题：<strong>邮件上报领导→现场发版→事后补材料</strong></li>
+          <li>文档归档：里程碑节点<strong>关闭前</strong>归档，否则算延期</li>
+          <li>安全密码：<strong>8—3—90—5—5</strong>（8位·3种字符·90天更换·历史5次不重复·5次错误锁定）</li>
+          <li>段落标题规范：<strong>一、→（一）→ 1. →（1）→ a.</strong></li>
+          <li>总体要求6条：<strong>遵循规范·各职能定标准·负责人培养·分派检查·专业优先·特殊情况沟通</strong></li>
+          <li>PM监控5点：<strong>里程碑·需求填报·功能开发·工时·问题跟踪表</strong></li>
+          <li>技术组长监控3点：<strong>功能开发·工时·代码质量</strong></li>
+          <li>禅道版本名=迭代名，阶段选<strong>编码自测</strong></li>
+        </ul>
+      </div>
+
+      <div class="quick-card">
+        <h3>📝 第二周内部讲解速记</h3>
+        <ul>
+          <li>讲解框架：<strong>背景→版本→清单→重点→原型→边界→遗留</strong></li>
+          <li>禅道命名：<kbd>【模块】功能名（版本号）</kbd></li>
+          <li>需求录入：评审完 <strong>2天内</strong></li>
+          <li>功能点数量/名称须与功能清单 <strong>完全一致</strong></li>
+          <li>部署上线PM准备：<strong>4清单+1配置文档</strong></li>
+          <li>SVN归档：每次迭代建 <strong>版本文件夹</strong></li>
+          <li>提测和发版必须 <strong>分开邮件</strong></li>
+          <li>问题监控：高优<strong>5天</strong>异常 · 中优<strong>15天</strong>异常</li>
+          <li>计划调整：邮件上级+PMO → 回复后禅道变更</li>
+          <li>里程碑节点数备注：<kbd>功能点：210个</kbd></li>
+        </ul>
+      </div>
+
+      <div class="quick-card">
+        <h3>🎤 考核日复现速记</h3>
+        <ul>
+          <li><strong>五步法：</strong>背景→功能逻辑→交互流程→边界情况→回答提问</li>
+          <li>选 <strong>3-5个核心功能</strong> 提前准备逐字稿</li>
+          <li>每个功能讲清：<strong>为什么做→怎么做→异常怎么处理</strong></li>
+          <li>对照 <strong>功能清单+原型</strong> 讲</li>
+          <li>回答提问站在 <strong>业务价值</strong> 角度</li>
+        </ul>
+      </div>
+
+      <div class="quick-card">
+        <h3>🧪 安全培训速记</h3>
+        <ul>
+          <li>密码：<strong>8位+3种字符+90天更换+历史5次内不重复+5次锁定隔时解锁</strong></li>
+          <li>严禁：私接设备、明文传敏感数据、未加密带出</li>
+          <li>敏感数据：最小化原则、脱敏处理、即用即删、加密传递</li>
+          <li>自查：远望设备（勾选手机号+身份证号+压缩文件+10次上报）或python脚本</li>
+          <li>文件打包：「部门-姓名-时间」，上传ftp</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip blue" style="margin-top:16px;">
+      <strong>🏁 考核日当天建议：</strong>
+      提前到会议室打开原型和功能清单 → 领导抽功能点后冷静五步法展开 → 
+      记不住的先讲背景和逻辑（这是你最熟悉的）→ 边界情况如果一时想不起，坦诚说「这块我确认后再补充」
+      → 回答提问时多举业务场景例子
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>本资料基于《湖楚软件项目实施过程管理制度V1.0》《软件交付部核心岗位职责》《项目监控和日常工作操作指引》整理</p>
+    <p style="margin-top:2px;color:#cbd5e0;">黄俊 · 2026年7月 · 考核日期：7/28（周二）</p>
+  </div>
+</footer>
+
+<script>
+// 模式切换
+var currentMode = localStorage.getItem('examMode') || 'study';
+function applyMode(mode) {
+  var toggle = document.getElementById('modeToggle');
+  var answers = document.querySelectorAll('.qa-answer');
+  if (mode === 'exam') {
+    toggle.classList.add('exam');
+    answers.forEach(function(a) { a.classList.add('collapsed'); });
+  } else {
+    toggle.classList.remove('exam');
+    answers.forEach(function(a) { a.classList.remove('collapsed'); });
+  }
+  localStorage.setItem('examMode', mode);
+}
+function toggleMode() {
+  var toggle = document.getElementById('modeToggle');
+  var newMode = toggle.classList.contains('exam') ? 'study' : 'exam';
+  applyMode(newMode);
+}
+applyMode(currentMode);
+
+// 标记功能 — 标记同步到 URL 地址，分享链接给另一台设备即可同步
+function getMarksFromURL() {
+  var hash = window.location.hash;
+  var match = hash.match(/m=([\d,]+)/);
+  return match ? match[1].split(',').filter(Boolean).map(Number) : [];
+}
+function marksToURL(ids) {
+  var base = window.location.href.split('#')[0];
+  var newHash = ids.length > 0 ? '#m=' + ids.join(',') : '';
+  history.replaceState(null, '', base + newHash);
+}
+function toggleMark(el) {
+  var card = el.closest('.qa-card');
+  card.classList.toggle('marked');
+  var cards = document.querySelectorAll('.qa-card');
+  var markedIndices = [];
+  cards.forEach(function(c, i) {
+    if (c.classList.contains('marked')) markedIndices.push(i + 1);
+  });
+  if (card.classList.contains('marked')) {
+    el.textContent = '✅';
+  } else {
+    el.textContent = '🔖';
+  }
+  localStorage.setItem('examMarks', JSON.stringify(markedIndices));
+  marksToURL(markedIndices);
+  saveMarksToCloud(markedIndices);
+  updateFilterBtn();
+}
+// 云端标记同步（jsonblob.com — 免费、无需注册、自动跨设备同步）
+var BLOB_ID = '019f7a3c-f487-72d6-96e4-d0f6a66180ac';
+var BLOB_URL = 'https://jsonblob.com/api/jsonBlob/' + BLOB_ID;
+var syncTimer = null;
+
+function saveMarksToCloud(marks) {
+  if (!marks) {
+    var cards = document.querySelectorAll('.qa-card');
+    marks = [];
+    cards.forEach(function(c, i) {
+      if (c.classList.contains('marked')) marks.push(i + 1);
+    });
+  }
+  // 读取当前云端全部数据 → 更新当前 URL 的标记 → 写回
+  fetch(BLOB_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      data[window.location.href.split('#')[0]] = marks;
+      fetch(BLOB_URL, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    })
+    .catch(function() {});
+}
+
+function fetchMarksFromCloud(callback) {
+  var url = window.location.href.split('#')[0];
+  fetch(BLOB_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var cloudMarks = data[url] || [];
+      if (cloudMarks.length > 0 && callback) callback(cloudMarks);
+    })
+    .catch(function() {});
+}
+
+// 初始化：云 → URL → localStorage
+(function initMarks() {
+  var urlMarks = getMarksFromURL();
+  var localMarks = JSON.parse(localStorage.getItem('examMarks') || '[]');
+  var marks = urlMarks.length > 0 ? urlMarks : localMarks;
+  
+  // 先恢复本地标记
+  if (marks.length > 0) {
+    localStorage.setItem('examMarks', JSON.stringify(marks));
+    applyMarksToUI(marks);
+  }
+  
+  // 再从云端拉取最新标记覆盖
+  fetchMarksFromCloud(function(cloudMarks) {
+    localStorage.setItem('examMarks', JSON.stringify(cloudMarks));
+    marksToURL(cloudMarks);
+    applyMarksToUI(cloudMarks);
+  });
+})();
+
+function applyMarksToUI(marks) {
+  var cards = document.querySelectorAll('.qa-card');
+  cards.forEach(function(card, i) {
+    var btn = card.querySelector('.mark-btn');
+    if (marks.includes(i + 1)) {
+      card.classList.add('marked');
+      if (btn) btn.textContent = '✅';
+    } else {
+      card.classList.remove('marked');
+      if (btn) btn.textContent = '🔖';
+    }
+  });
+  updateFilterBtn();
+}
+
+// 自动同步：每10秒拉取云端变更
+function startAutoSync() {
+  if (syncTimer) clearInterval(syncTimer);
+  syncTimer = setInterval(function() {
+    fetchMarksFromCloud(function(cloudMarks) {
+      var localMarks = JSON.parse(localStorage.getItem('examMarks') || '[]');
+      if (JSON.stringify(cloudMarks) !== JSON.stringify(localMarks)) {
+        localStorage.setItem('examMarks', JSON.stringify(cloudMarks));
+        marksToURL(cloudMarks);
+        applyMarksToUI(cloudMarks);
+      }
+    });
+  }, 10000);
+}
+startAutoSync();
+
+// 切换标签页时立即同步
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) {
+    fetchMarksFromCloud(function(cloudMarks) {
+      var localMarks = JSON.parse(localStorage.getItem('examMarks') || '[]');
+      if (JSON.stringify(cloudMarks) !== JSON.stringify(localMarks)) {
+        localStorage.setItem('examMarks', JSON.stringify(cloudMarks));
+        marksToURL(cloudMarks);
+        applyMarksToUI(cloudMarks);
+      }
+    });
+  }
+});
+// 给每个 Q 卡片添加标记按钮
+document.querySelectorAll('.qa-card').forEach(function(card) {
+  var q = card.querySelector('.qa-question');
+  if (!q) return;
+  var btn = document.createElement('span');
+  btn.className = 'mark-btn';
+  btn.textContent = '🔖';
+  btn.onclick = function(e) { e.stopPropagation(); toggleMark(this); };
+  q.appendChild(btn);
+});
+
+// 分享带标记的链接
+function shareMarked() {
+  var url = window.location.href;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function() {
+      var btn = document.getElementById('shareMarks');
+      var oldText = btn.textContent;
+      btn.textContent = '✅ 已复制';
+      setTimeout(function() { btn.textContent = oldText; }, 2000);
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = url;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    alert('链接已复制，请粘贴到其他设备打开');
+  }
+}
+
+// 筛选按钮
+var filterActive = false;
+function toggleFilter() {
+  filterActive = !filterActive;
+  var btn = document.getElementById('filterMarked');
+  var cards = document.querySelectorAll('.qa-card');
+  if (filterActive) {
+    btn.style.background = '#fff5f5';
+    btn.style.borderColor = '#fc8181';
+    cards.forEach(function(c) {
+      c.style.display = c.classList.contains('marked') ? '' : 'none';
+    });
+  } else {
+    btn.style.background = '';
+    btn.style.borderColor = '';
+    cards.forEach(function(c) { c.style.display = ''; });
+  }
+}
+function updateFilterBtn() {
+  var count = document.querySelectorAll('.qa-card.marked').length;
+  var btn = document.getElementById('filterMarked');
+  btn.textContent = '🔖 标记' + (count > 0 ? '(' + count + ')' : '');
+}
+
+// 点击展开/收起单个答案
+document.querySelectorAll('.qa-question').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var answer = this.nextElementSibling;
+    // 用 class 控制展开收起，避免 Safari 对 display:block 的长内容渲染不全
+    if (answer.classList.contains('collapsed')) {
+      answer.classList.remove('collapsed');
+    } else {
+      answer.classList.add('collapsed');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
