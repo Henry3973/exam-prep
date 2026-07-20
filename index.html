@@ -2137,6 +2137,16 @@ document.addEventListener('visibilitychange', function() {
 document.querySelectorAll('.qa-card').forEach(function(card) {
   var q = card.querySelector('.qa-question');
   if (!q) return;
+  
+  // 设置序号
+  var allCards = document.querySelectorAll('.qa-card');
+  var idx = -1;
+  allCards.forEach(function(c, i) {
+    if (c === card) idx = i + 1;
+  });
+  var icon = card.querySelector('.q-icon');
+  if (icon) icon.textContent = 'Q' + idx;
+  
   var btn = document.createElement('span');
   btn.className = 'mark-btn';
   btn.textContent = '🔖';
