@@ -800,9 +800,12 @@ body {
             </ul>
           </div>
           <div class="doc-list">
-            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:#2d3748;">📋 归档材料（附表B交接核心材料38项）：</div>
-            <div class="doc-item"><span class="doc-name">包含需求、设计、测试、部署、运维全阶段材料</span></div>
-            <div class="doc-item"><span class="doc-name">关键：客户验收材料不能完全作为项目交接材料</span><span class="doc-owner">项目验收单·结项单 项目经理负责</span></div>
+            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:#2d3748;">📋 归档材料（结项包含全流程材料，见附表A）：</div>
+            <div class="doc-item"><span class="doc-name">《项目验收单》</span><span class="doc-owner">项目经理</span><span class="doc-must">·验收会获取</span></div>
+            <div class="doc-item"><span class="doc-name">《项目交接单》</span><span class="doc-owner">项目经理</span><span class="doc-must">·交接会→委员会审核</span></div>
+            <div class="doc-item"><span class="doc-name">《项目结项单》</span><span class="doc-owner">项目经理</span><span class="doc-must">·PMO审查→领导审批</span></div>
+            <div class="doc-item"><span class="doc-name">含：需求/设计/测试/部署/运维全阶段材料</span><span class="doc-owner">附表A 91项</span><span class="doc-must">·结项时全部归档</span></div>
+            <div class="doc-item"><span class="doc-name">客户验收材料不能完全作为项目交接材料</span><span class="doc-owner">关键规则</span></div>
           </div>
         </div>
 
@@ -1743,25 +1746,44 @@ body {
         <span class="q-tag blue">管理制度</span>
       </div>
       <div class="qa-answer">
-        <p>根据附表B，产品经理（产品组）需交接的 <strong>必须材料</strong>：</p>
-        <p style="margin-top:6px;font-size:13px;color:#2d3748;"><strong>📝 验收阶段先获取：</strong></p>
-        <ul style="font-size:13px;">
-          <li><strong>《项目验收单》</strong> — 项目经理开验收会获取，除产品类项目外原则上先拿验收单再结项</li>
-          <li><strong>《项目交接单》</strong> — 组织交接会向运维团队介绍，项目管理委员会审核后输出</li>
-          <li><strong>《项目结项单》</strong> — 项目经理填写，PMO审查归档完整性，公司领导审批结项</li>
-        </ul>
-        <p style="margin-top:10px;font-size:13px;color:#2d3748;"><strong>📦 交接核心材料（产品组部分）：</strong></p>
-        <table class="data-table">
-          <tr><th>材料</th><th>审核要点</th></tr>
-          <tr><td>📖 业务需求说明书</td><td>系统常用业务场景有对应说明，符合公司需求文档标准</td></tr>
-          <tr><td>📋 系统清单</td><td>与线上系统一致</td></tr>
-          <tr><td>📋 系统模块清单</td><td>与线上系统一致</td></tr>
-          <tr><td>📋 系统功能清单</td><td>与线上系统一致</td></tr>
-          <tr><td>📋 系统权限清单</td><td>与线上系统一致</td></tr>
-          <tr><td>📑 需求规格说明书</td><td class="highlight">可选（推荐有）</td></tr>
-        </table>
-        <div class="tip" style="margin-top:8px;">
-          <strong>⚠️ 注意：</strong>客户验收材料不能完全作为项目交接材料。交接时项目管理委员会和其他职能负责人会对内容进行抽查。
+        <div style="background:#f7fafc;border-radius:8px;padding:14px;margin-bottom:12px;">
+          <p style="font-weight:600;font-size:13px;color:#c53030;">📤 验收阶段（向客户交付）</p>
+          <p style="font-size:12px;color:#4a5568;line-height:1.8;">项目经理组织团队成员，按照<strong>业主或监理方要求的文档目录和文档标准</strong>，整理输出全套验收文档，包括：</p>
+          <ul style="font-size:12px;color:#4a5568;line-height:2;">
+            <li><strong>各阶段过程文档</strong>：需求分析材料、设计开发材料、系统测试材料、部署上线材料、项目运维材料</li>
+            <li><strong>后补完善文档</strong>：《需求规格说明书》《详细设计说明》《数据库设计说明》等（确保与线上系统一致）</li>
+            <li><strong>验收汇报材料</strong>：验收PPT、演示材料等</li>
+            <li><strong>最终获取</strong>：<kbd>《项目验收单》</kbd>（项目经理开验收会获取）</li>
+          </ul>
+          <div class="tip" style="font-size:11px;margin-top:4px;"><strong>💡</strong> 产品类项目无需另外整理验收文档</div>
+        </div>
+
+        <div style="background:#fffaeb;border-radius:8px;padding:14px;margin-bottom:12px;">
+          <p style="font-weight:600;font-size:13px;color:#b7791f;">📦 结项交接阶段（公司内部）</p>
+          <p style="font-size:12px;color:#4a5568;line-height:1.8;">按照<strong>附表B（交接核心材料38项）</strong>，各职能组交付：</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0;font-size:12px;">
+            <div style="background:#fff;border-radius:6px;padding:8px;">
+              <p style="font-weight:600;color:#2b6cb0;">📖 产品组</p>
+              <p style="color:#4a5568;line-height:1.8;">业务需求说明书<br>系统清单、模块清单<br>功能清单、权限清单<br>需求规格说明书</p>
+            </div>
+            <div style="background:#fff;border-radius:6px;padding:8px;">
+              <p style="font-weight:600;color:#276749;">💻 研发组</p>
+              <p style="color:#4a5568;line-height:1.8;">技术总体设计说明<br>系统详细设计说明<br>数据库设计说明<br>对外接口调用说明<br>发布程序包</p>
+            </div>
+            <div style="background:#fff;border-radius:6px;padding:8px;">
+              <p style="font-weight:600;color:#6b46c1;">🧪 测试组</p>
+              <p style="color:#4a5568;line-height:1.8;">测试用例<br>功能测试报告<br>性能测试报告<br>安全测试报告</p>
+            </div>
+            <div style="background:#fff;border-radius:6px;padding:8px;">
+              <p style="font-weight:600;color:#c53030;">⚙️ 交付组</p>
+              <p style="color:#4a5568;line-height:1.8;">系统部署方案<br>部署方案评审单<br>运维服务方案<br>项目巡检记录<br>运维手册</p>
+            </div>
+          </div>
+          <p style="font-size:12px;color:#4a5568;"><strong>结项文档：</strong><kbd>《项目交接单》</kbd>（交接会→委员会审核）→ <kbd>《项目结项单》</kbd>（PMO审查→领导审批）</p>
+        </div>
+
+        <div class="tip red" style="font-size:12px;">
+          <strong>⚠️ 关键规则：</strong>客户验收材料不能完全作为项目交接材料。交接材料需符合公司文档标准，由职能组负责人审核、项目管理委员会抽查。
         </div>
       </div>
     </div>
